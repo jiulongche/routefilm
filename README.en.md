@@ -1,12 +1,16 @@
 # RouteFilm
 
-Give an agent an ordered city list and receive a real-map road-trip video with routed roads, automatic cameras, marker motion, ferry handoffs, landmarks, and optional music.
+[![CI](https://github.com/jiulongche/routefilm/actions/workflows/ci.yml/badge.svg)](https://github.com/jiulongche/routefilm/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/jiulongche/routefilm?display_name=tag&sort=semver)](https://github.com/jiulongche/routefilm/releases)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2f855a.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-Codex_%7C_Claude_Code-f2b84b)](docs/agent-compatibility.md)
 
-![RouteFilm poster](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-poster.jpg)
+**Give an agent any ordered city list and get a cinematic travel video on real maps.** No coordinates are required: RouteFilm resolves routed roads and handles distance-aware cameras, marker motion, ferry handoffs, city landmarks, and optional music.
 
-[Watch the first five arrivals from the production master](https://github.com/jiulongche/routefilm/raw/refs/heads/main/docs/media/routefilm-five-stops-demo.mp4).
+![RouteFilm animated preview](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-preview.gif)
 
-![Full arrival storyboard](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-full-storyboard.jpg)
+RouteFilm includes 63 offline city landmarks, so image generation is optional. Codex and Claude Code are first-class Skill targets. Routes always come from user input; the included examples are replaceable starting points, never fixed defaults.
 
 ## Fastest path
 
@@ -39,8 +43,22 @@ RouteFilm resolves, ranks, and caches coordinates automatically; users never ent
 
 The agent handles setup, map configuration, distance-aware cameras, adaptive regional or national overview framing, persistent map/status landmarks, poster and pilot review, ferry logic, rendering, and QA. Every poster or render receives an immutable run directory with config, hashes, code revision, and QA; the requested output path is only an atomic latest pointer.
 
+## Example routes
+
+- [Dense Jiangnan city cluster](examples/jiangnan-city-cluster.yaml): close camera work for nearby stops and labels
+- [Cross-province road trip](examples/cross-province-road-trip.yaml): higher, faster long legs with readable regional sections
+- [Haikou ferry route](examples/haikou-ferry-route.yaml): automatic five-stage vehicle/ferry handoff
+
+Copy an example and replace only the ordered names under `route`, or skip YAML entirely and give your own route directly to the Skill.
+
+## Production detail
+
+[Watch the first five arrivals from the production master](https://github.com/jiulongche/routefilm/raw/refs/heads/main/docs/media/routefilm-five-stops-demo.mp4) · 40 seconds · 720×1280 · silent master
+
+![Full arrival storyboard](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-full-storyboard.jpg)
+
 Codex and Claude Code are first-class targets. Agent Skills-compatible tools and agents that read `AGENTS.md` receive best-effort support.
 
-See the [Chinese README](README.md), [manual CLI reference](docs/cli-reference.md), and [map/compliance notes](docs/maps-and-compliance.md).
+See the [Chinese README](README.md), [manual CLI reference](docs/cli-reference.md), [map/compliance notes](docs/maps-and-compliance.md), and [bilingual launch kit](docs/launch-kit.md).
 
 Code is MIT licensed. Original demonstration media in `docs/media/` is CC BY 4.0. Map data, tiles, fonts, audio, generated assets, and external services retain their own terms.

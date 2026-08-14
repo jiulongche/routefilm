@@ -24,5 +24,6 @@ licensed-audio/
 !docs/media/routefilm-five-stops-demo.mp4
 *.mov
 *.gif
+!docs/media/routefilm-preview.gif
 *.license.json
 *.generation.json

@@ -1,12 +1,16 @@
 # RouteFilm
 
-把一串城市交给智能体，得到真实地图上的自驾路线视频：实际道路、自动镜头、载具运动、轮渡交接、城市地标和配乐版本。
+[![CI](https://github.com/jiulongche/routefilm/actions/workflows/ci.yml/badge.svg)](https://github.com/jiulongche/routefilm/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/jiulongche/routefilm?display_name=tag&sort=semver)](https://github.com/jiulongche/routefilm/releases)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-2f855a.svg)](LICENSE)
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-Codex_%7C_Claude_Code-f2b84b)](docs/agent-compatibility.md)
 
-![RouteFilm 正式成片海报](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-poster.jpg)
+**把任意一串城市交给智能体，得到真实地图上的电影感路线视频。** 只需按顺序输入地名，不用填写经纬度；RouteFilm 自动处理实际道路、距离感知镜头、载具运动、轮渡交接、城市地标和配乐版本。
 
-[查看正式成片前 5 个到达点节选](https://github.com/jiulongche/routefilm/raw/refs/heads/main/docs/media/routefilm-five-stops-demo.mp4) · 40 秒 · 720×1280 · 静音母版
+![RouteFilm 动态演示](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-preview.gif)
 
-![RouteFilm 完整到站分镜](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-full-storyboard.jpg)
+内置 63 座城市地标，无生图服务也能丰富到站画面；Codex 和 Claude Code 均可直接通过 Skill 引导完成。路线始终来自用户输入，示例只是可替换的起点。
 
 ## 最快使用
 
@@ -29,6 +33,20 @@ Skill 一次只问一个问题：先收路线，再用选择界面询问载具�
 坐标由项目自动查询、筛选和缓存，用户不需要输入经纬度；只有“临平”这类名称确实对应多个同等匹配地点时，智能体才会用候选选择题单独询问具体地点。
 
 项目内置新版暖金箭头、无品牌黑色电动 SUV 和滚装轮渡。轮渡不是全程载具选项，只在识别到海峡路段时自动完成车船交接。想换成自己的透明素材或 GPT Image 2 生成载具时，在同一句话里补充即可。地图样式、长短途镜头、城市标签、海报、局部样片和质量检查都由智能体处理，不需要先理解配置文件或命令行。
+
+## 三条路线示例
+
+- [江浙沪密集城市](examples/jiangnan-city-cluster.yaml)：短距离站点自动拉近，适合检查标签与镜头节奏
+- [跨省长途路线](examples/cross-province-road-trip.yaml)：长距离自动拉高并提速，区域段落保持可读
+- [琼州海峡轮渡](examples/haikou-ferry-route.yaml)：自动触发接近、登船、航行、下船、驶离五阶段
+
+复制任一 YAML 后只需替换 `route` 中的城市顺序。也可以完全不接触配置文件，直接把自己的路线发给 Skill。
+
+## 成片细节
+
+[查看正式成片前 5 个到达点节选](https://github.com/jiulongche/routefilm/raw/refs/heads/main/docs/media/routefilm-five-stops-demo.mp4) · 40 秒 · 720×1280 · 静音母版
+
+![RouteFilm 完整到站分镜](https://raw.githubusercontent.com/jiulongche/routefilm/main/docs/media/routefilm-full-storyboard.jpg)
 
 ## 智能体安装
 
@@ -98,6 +116,7 @@ python scripts/install_agent_skills.py --agent both
 - [架构与数据流](docs/architecture.md)
 - [地图、投影与合规](docs/maps-and-compliance.md)
 - [音乐工作流](docs/music-workflow.md)
+- [发布与社区传播素材](docs/launch-kit.md)
 - [English README](README.en.md)
 
 代码使用 MIT License；`docs/media/` 中的原创演示内容使用 CC BY 4.0。地图、字体、音频、生成素材与外部服务保留各自条款。使用 OSM 数据或瓦片时必须保留 `© OpenStreetMap contributors`，并遵守对应服务策略。详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
