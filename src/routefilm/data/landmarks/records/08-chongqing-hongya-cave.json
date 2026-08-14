@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "重庆",
+  "source": "output/arrival-landmarks/pilot/raw/02-chongqing-hongya-cave.png",
+  "output": "output/arrival-landmarks/formal/raw/08-chongqing-hongya-cave.png",
+  "packaged_asset": {
+    "sha256": "487ee877ac9e1b7efdbda73ca2a8836861a0b585f2eb34ebae9e4f95002ecaa3",
+    "bytes": 301866,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 合肥, China: 包公园\nSubject details: A recognizable Bao Gong memorial pavilion with dark tiled roof, red timber, a lotus pond, stone bridge, and restrained Anhui garden setting.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "44-hefei-bao-park-chroma.png",
+  "output": "44-hefei-bao-park.png",
+  "city": "合肥",
+  "landmark": "包公园",
+  "builtin_asset": "44-hefei-bao-park.webp",
+  "packaged_asset": {
+    "sha256": "e7308cad13fe7bd1e5f1bbac5a69bf46352d48fb4e71e57fc9c757092bf0e39f",
+    "bytes": 235372,
+    "width": 768,
+    "height": 651,
+    "format": "WEBP"
+  }
+}

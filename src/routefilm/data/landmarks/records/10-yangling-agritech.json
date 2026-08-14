@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "杨凌",
+  "source": "output/arrival-landmarks/pilot/raw/06-yangling-agritech.png",
+  "output": "output/arrival-landmarks/formal/raw/10-yangling-agritech.png",
+  "packaged_asset": {
+    "sha256": "41c2254957fce42b410387dc3cab41572adcd25b6a4a9a6ca04e6798852b1e6e",
+    "bytes": 276326,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

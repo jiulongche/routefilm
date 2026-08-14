@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "无锡",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 69.68,
+  "output": "output/arrival-landmarks/formal/raw/23-wuxi-yuantouzhu.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Wuxi, China: Yuantouzhu on Taihu Lake\nSubject details: a broad blue Taihu lake edge, one elegant lakeside pavilion, summer-green trees and layered distant lake islands; no pink cherry blossoms, emphasize open water and headland",
+  "packaged_asset": {
+    "sha256": "e98ab0e8d8e5fde88f0ccdabf9815b331041f7f2945b23a3df4c94beece17ba9",
+    "bytes": 302704,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

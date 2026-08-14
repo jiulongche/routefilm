@@ -1,6 +1,6 @@
 # Third-Party Notices
 
-RouteFilm does not redistribute map tiles, route caches, fonts, or downloaded music. It includes three generated demonstration/preset marker images; those images are documentation and workflow assets rather than geographic data.
+RouteFilm does not redistribute map tiles, route caches, fonts, or downloaded music. It includes generated marker and landmark assets; those images are workflow assets rather than geographic data.
 
 ## OpenStreetMap
 
@@ -33,6 +33,10 @@ The bundled arrow, black vehicle, and ferry were created for RouteFilm with GPT 
 - ferry: `745669ccd78a304ba1eb778c4c1184206757ea37caa588c423543d25ecd9e40c`
 
 The black SUV preset is an original fictional design requested without badges, logos, trademarks, or identifiable manufacturer styling. Generated assets and API use remain subject to the provider terms and applicable law.
+
+## Bundled Landmark Library
+
+The 63 original AI-assisted RouteFilm landmark assets under `src/routefilm/data/landmarks/` are released under CC BY 4.0, with attribution to RouteFilm contributors. Their catalog and retained generation records identify the represented city and landmark, packaged WebP hash, byte size, and dimensions. These illustrations are creative miniatures, not authoritative geographic, architectural, cultural, or political records.
 
 ## Demonstration Media
 

@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 银川, China: 西夏王陵\nSubject details: A monumental earthen Western Xia tomb tower on a tawny plain with the blue Helan Mountains behind and restrained desert vegetation.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "59-yinchuan-western-xia-tombs-chroma.png",
+  "output": "59-yinchuan-western-xia-tombs.png",
+  "city": "银川",
+  "landmark": "西夏王陵",
+  "builtin_asset": "59-yinchuan-western-xia-tombs.webp",
+  "packaged_asset": {
+    "sha256": "49823b004edb15ad2489187e8b6c89114ee984fa59908df94f2a270f20041389",
+    "bytes": 196196,
+    "width": 768,
+    "height": 554,
+    "format": "WEBP"
+  }
+}

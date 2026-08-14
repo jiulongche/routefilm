@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "乾县临平",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 69.06,
+  "output": "output/arrival-landmarks/formal/raw/12-qianxian-qianling.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Qian County, China: Qianling Mausoleum\nSubject details: the monumental Qianling spirit way with one dominant blank stone stele, paired stone guardian figures, a straight ceremonial path and distant Liangshan hills; dignified Tang imperial landscape",
+  "packaged_asset": {
+    "sha256": "a60ec5c7d6913f15b1a1fb7ee57833202c00741d407348149a639faeab201be6",
+    "bytes": 356964,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

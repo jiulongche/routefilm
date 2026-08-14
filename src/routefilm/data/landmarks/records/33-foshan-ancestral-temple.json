@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "佛山",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 73.5,
+  "output": "output/arrival-landmarks/formal/raw/33-foshan-ancestral-temple.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Foshan, China: Foshan Ancestral Temple\nSubject details: a richly detailed but readable Lingnan temple hall with sweeping dark tiled roof, colorful ceramic ridge sculpture, red columns and one restrained stone lion; authentic southern Chinese craftsmanship",
+  "packaged_asset": {
+    "sha256": "505b2525ec799a64bf8064eaf023010f4d1a99da66b7125d033a2d69a1695c97",
+    "bytes": 349444,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

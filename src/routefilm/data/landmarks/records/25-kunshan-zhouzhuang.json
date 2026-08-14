@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "昆山",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 81.2,
+  "output": "output/arrival-landmarks/formal/raw/25-kunshan-zhouzhuang.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Kunshan, China: Zhouzhuang Twin Bridges\nSubject details: the recognizable intersecting stone Twin Bridges over narrow Jiangnan canals, whitewashed houses with dark tiled roofs and willow reflections; quiet historic water town in daylight",
+  "packaged_asset": {
+    "sha256": "6c725d868045dbe02dc47b5f4842b1143dda2e4c315fedc98f5965310c5b4f17",
+    "bytes": 320486,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

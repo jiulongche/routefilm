@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 广州, China: 广州塔\nSubject details: The slender twisting Canton Tower beside a broad Pearl River curve, with restrained modern skyline forms and subtropical green riverbanks.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "51-guangzhou-canton-tower-chroma.png",
+  "output": "51-guangzhou-canton-tower.png",
+  "city": "广州",
+  "landmark": "广州塔",
+  "builtin_asset": "51-guangzhou-canton-tower.webp",
+  "packaged_asset": {
+    "sha256": "a9545b071d2d48e2387a3ca0e21254d04d239e41d19075b34803b5315c2b6d7a",
+    "bytes": 245618,
+    "width": 768,
+    "height": 766,
+    "format": "WEBP"
+  }
+}

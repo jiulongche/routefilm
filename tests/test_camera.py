@@ -7,6 +7,7 @@ from routefilm.camera import (
     interpolate,
     route_overview_camera,
 )
+from routefilm.tiles import screen_point
 
 
 def test_long_leg_is_higher_than_same_short_geometry():
@@ -28,11 +29,15 @@ def test_camera_interpolation_keeps_endpoints():
 
 def test_regional_china_route_uses_tight_full_route_overview():
     route = [(121.47, 31.23), (118.80, 32.06), (117.12, 36.65), (116.41, 39.90)]
+    viewport = (672, 874)
 
-    camera = route_overview_camera(route, (672, 874))
+    camera = route_overview_camera(route, viewport)
 
     assert camera.zoom > 5.5
     assert camera != china_national_camera()
+    screen = [screen_point(point, camera.center, camera.zoom, (0, 0, *viewport)) for point in route]
+    assert all(34 <= x <= viewport[0] - 34 for x, _ in screen)
+    assert all(44 <= y <= viewport[1] - 44 for _, y in screen)
 
 
 def test_broad_china_route_uses_national_overview():

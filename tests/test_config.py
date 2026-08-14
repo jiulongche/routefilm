@@ -22,6 +22,7 @@ video:
     config = load_project(project)
     assert config.legs[0].kind == "ferry"
     assert config.video.marker == "arrow"
+    assert config.video.landmarks == "auto"
     assert config.video.show_ferry is True
     assert config.video.output == (tmp_path / "output/trip.mp4").resolve()
 
@@ -76,3 +77,16 @@ def test_video_title_accepts_custom_chinese_text(tmp_path: Path):
     )
 
     assert load_project(project).video.title == "一路向北"
+
+
+def test_landmarks_can_be_disabled_without_removing_stop_metadata(tmp_path: Path):
+    project = tmp_path / "trip.yaml"
+    project.write_text(
+        "stops: [{name: A, lon: 1, lat: 1, landmark: Tower}, {name: B, lon: 2, lat: 2}]\n"
+        "video: {landmarks: none}\n",
+        encoding="utf-8",
+    )
+
+    config = load_project(project)
+    assert config.video.landmarks == "none"
+    assert config.stops[0].landmark == "Tower"

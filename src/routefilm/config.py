@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -48,6 +49,7 @@ class VideoSettings:
     output: Path = Path("output/routefilm.mp4")
     font_path: Path | None = None
     marker: str = "arrow"
+    landmarks: str = "auto"
     show_ferry: bool = True
     vehicle_asset: Path | None = None
     ferry_asset: Path | None = None
@@ -71,7 +73,10 @@ def _path(base: Path, value: Any) -> Path | None:
     if value in (None, ""):
         return None
     candidate = Path(str(value)).expanduser()
-    return candidate if candidate.is_absolute() else (base / candidate).resolve()
+    candidate = candidate if candidate.is_absolute() else base / candidate
+    # Keep the lexical output path stable when it is a latest-version symlink.
+    # Opening input paths still follows symlinks normally at I/O time.
+    return Path(os.path.abspath(candidate))
 
 
 def _route_items(raw: dict[str, Any]) -> list[Any]:
@@ -152,6 +157,7 @@ def load_project(path: str | Path) -> ProjectConfig:
         output=_path(base, video_raw.get("output", "output/routefilm.mp4")) or Path("output/routefilm.mp4"),
         font_path=_path(base, video_raw.get("font_path")),
         marker=str(video_raw.get("marker", "arrow")),
+        landmarks=str(video_raw.get("landmarks", "auto")),
         show_ferry=bool(video_raw.get("show_ferry", True)),
         vehicle_asset=_path(base, video_raw.get("vehicle_asset")),
         ferry_asset=_path(base, video_raw.get("ferry_asset")),
@@ -165,4 +171,6 @@ def load_project(path: str | Path) -> ProjectConfig:
         raise ValueError("video dimensions or fps are invalid")
     if video.marker not in {"arrow", "black-suv"}:
         raise ValueError("video.marker must be arrow or black-suv")
+    if video.landmarks not in {"auto", "none"}:
+        raise ValueError("video.landmarks must be auto or none")
     return ProjectConfig(stops, legs, map_settings, video, source)

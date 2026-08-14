@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "都匀",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 64.24,
+  "output": "output/arrival-landmarks/formal/raw/06-duyun-wenfeng.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Duyun, China: Wenfeng Pagoda and Jian River\nSubject details: the slender historic Wenfeng Pagoda beside the gently curving Jian River, one traditional stone bridge and forested riverbanks; compact Guizhou river-city identity, not a generic Chinese garden",
+  "packaged_asset": {
+    "sha256": "eddca6c5d4250a83cc2a9abcc81d507029066e732abc56b2763d2238935b6897",
+    "bytes": 288040,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

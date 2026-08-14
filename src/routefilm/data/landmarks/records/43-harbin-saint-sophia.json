@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 哈尔滨, China: 圣索菲亚教堂\nSubject details: Saint Sophia Cathedral with its green onion domes, warm red brick walls, arched windows, and a compact open plaza without signs or people.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "43-harbin-saint-sophia-chroma.png",
+  "output": "43-harbin-saint-sophia.png",
+  "city": "哈尔滨",
+  "landmark": "圣索菲亚教堂",
+  "builtin_asset": "43-harbin-saint-sophia.webp",
+  "packaged_asset": {
+    "sha256": "1348d75f208205c6911a988ca31b1dcacdd40232f4163cb31b8e1f7dd7508a03",
+    "bytes": 201726,
+    "width": 720,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

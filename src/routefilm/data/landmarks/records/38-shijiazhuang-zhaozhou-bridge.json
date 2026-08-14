@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 石家庄, China: 赵州桥\nSubject details: The historic single-arch Zhaozhou stone bridge crossing a calm river, with accurate open spandrels, willow-lined banks, and restrained North China landscape.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "38-shijiazhuang-zhaozhou-bridge-chroma.png",
+  "output": "38-shijiazhuang-zhaozhou-bridge.png",
+  "city": "石家庄",
+  "landmark": "赵州桥",
+  "builtin_asset": "38-shijiazhuang-zhaozhou-bridge.webp",
+  "packaged_asset": {
+    "sha256": "59bb192a625fbb0f314e6032903f30745d4c796a2216d289fa80fe51c1603e9d",
+    "bytes": 237516,
+    "width": 768,
+    "height": 629,
+    "format": "WEBP"
+  }
+}

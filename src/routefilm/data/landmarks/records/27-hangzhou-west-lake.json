@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "杭州",
+  "source": "output/arrival-landmarks/pilot/raw/01-hangzhou-west-lake.png",
+  "output": "output/arrival-landmarks/formal/raw/27-hangzhou-west-lake.png",
+  "packaged_asset": {
+    "sha256": "32b3c95432f2a16053bf597c8859198d0a1a85c9a310b1167c361f92ef23f10b",
+    "bytes": 293898,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

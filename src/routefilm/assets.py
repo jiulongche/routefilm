@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import urllib.request
 from pathlib import Path
@@ -11,6 +12,8 @@ import numpy as np
 from PIL import Image
 
 from .image_config import resolve_image_credentials
+from .landmarks import landmark_preset
+from .runs import versioned_path
 
 IMAGE_MODEL = "gpt-image-2"
 DATA_DIR = Path(__file__).with_name("data")
@@ -45,6 +48,7 @@ def default_arrow(size: int = 192) -> Image.Image:
 
 
 def save_default_arrow(path: Path, size: int = 512) -> Path:
+    path = versioned_path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     default_arrow(size).save(path)
     return path
@@ -56,19 +60,35 @@ Strict true bird's-eye orthographic view, camera exactly 90 degrees above.
 The vehicle nose points exactly to the right. Center one complete vehicle in a square canvas,
 occupying about 68% of the width with generous even padding. Premium semi-realistic miniature,
 crisp silhouette readable at 48 pixels, realistic materials, restrained highlights.
-Background must be one flat chroma green color #00FF00 edge to edge.
+Background must be one flat chroma magenta color #FF00FF edge to edge.
 Exactly one vehicle; no road, map, people, scenery, text, logo, watermark, cast shadow,
 contact shadow, motion blur, perspective view, or cropped body."""
 
 
 def landmark_prompt(city: str, landmark: str) -> str:
-    return f"""Create one map-animation landmark miniature for {city}: {landmark}.
-Show one recognizable landmark as a polished semi-realistic miniature diorama, viewed from a
-slightly elevated orthographic angle. Keep the silhouette accurate and readable when reduced,
-with crisp architectural detail and restrained natural color. Center the complete landmark with
-generous padding on a perfectly flat chroma green #00FF00 background edge to edge.
-No city name, caption, letters, logo, watermark, people, map, road, frame, cast shadow, contact
-shadow, background scenery, gradient, or cropped structure."""
+    preset = landmark_preset(city)
+    subject = str(preset["subject"]) if preset else f"A geographically recognizable depiction of {landmark}."
+    return f"""Use case: stylized-concept
+Asset type: arrival landmark asset for a vertical animated real-map travel video
+Primary request: create {city}, China: {landmark}
+Subject details: {subject}
+Style/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture
+and landscape, polished and detailed but not toy-like
+Composition/framing: one compact landmark diorama on a small irregular terrain island, slightly
+elevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,
+generous clean padding
+Lighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,
+clear atmosphere
+Color direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and
+warm-gold accents
+Technical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus
+across the whole landmark, readable in a 360-pixel showcase
+Background: one perfectly flat chroma magenta #FF00FF color edge to edge
+Constraints: no city name, no caption, no letters, no logo, no watermark, no people, no vehicles,
+no flags, no map, no road, no frame, no cast shadow, no contact shadow, no background scenery,
+no gradient, and no cropped structure
+Avoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy
+architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation."""
 
 
 def image_api_status(
@@ -114,16 +134,19 @@ def _remove_chroma(image: Image.Image) -> Image.Image:
     key = np.median(border, axis=0)
     key_distance = np.sqrt(((rgb - key) ** 2).sum(axis=2))
     distance_alpha = np.clip((key_distance - 14) * (255 / 116), 0, 255)
-    dominant_green = np.maximum(rgb[:, :, 1] - np.maximum(rgb[:, :, 0], rgb[:, :, 2]), 0)
-    dominance_alpha = np.clip((100 - dominant_green) * (255 / 70), 0, 255)
-    dominance_alpha = np.where(rgb[:, :, 1] >= 70, dominance_alpha, 255)
-    alpha = np.minimum(distance_alpha, dominance_alpha).astype(np.uint8)
-    partial = 1.0 - alpha.astype(np.float32) / 255
-    rgba[:, :, 1] = np.clip(
-        rgb[:, :, 1] - dominant_green * partial,
-        0,
-        255,
-    ).astype(np.uint8)
+    alpha = distance_alpha
+    if key[1] > key[0] + 30 and key[1] > key[2] + 30:
+        dominant_green = np.maximum(rgb[:, :, 1] - np.maximum(rgb[:, :, 0], rgb[:, :, 2]), 0)
+        dominance_alpha = np.clip((100 - dominant_green) * (255 / 70), 0, 255)
+        dominance_alpha = np.where(rgb[:, :, 1] >= 70, dominance_alpha, 255)
+        alpha = np.minimum(alpha, dominance_alpha)
+        partial = 1.0 - alpha.astype(np.float32) / 255
+        rgba[:, :, 1] = np.clip(
+            rgb[:, :, 1] - dominant_green * partial,
+            0,
+            255,
+        ).astype(np.uint8)
+    alpha = alpha.astype(np.uint8)
     rgba[:, :, 3] = np.minimum(rgba[:, :, 3], alpha)
     result = Image.fromarray(rgba, "RGBA")
     bbox = result.getchannel("A").getbbox()
@@ -150,8 +173,24 @@ def remove_background(image: Image.Image, method: str = "auto") -> Image.Image:
 
 
 def cutout_file(source: Path, output: Path, method: str = "auto") -> Path:
+    output = versioned_path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     remove_background(Image.open(source), method).save(output)
+    record = output.with_suffix(".cutout.json")
+    record.write_text(
+        json.dumps(
+            {
+                "source": source.name,
+                "output": output.name,
+                "method": method,
+                "source_sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+                "output_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
+            },
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
     return output
 
 
@@ -165,6 +204,7 @@ def _generate_asset(
     quality: str = "high",
 ) -> tuple[Path, Path]:
     endpoint, key = _image_api_credentials(base_url, api_key)
+    output = versioned_path(output)
     payload = json.dumps(
         {
             "model": IMAGE_MODEL,
@@ -186,7 +226,13 @@ def _generate_asset(
     output.parent.mkdir(parents=True, exist_ok=True)
     raw = output.with_name(output.stem + "-chroma.png")
     raw.write_bytes(image_bytes)
-    image = remove_background(Image.open(raw), "auto")
+    source = Image.open(raw)
+    try:
+        image = remove_background(source, "rembg")
+        cutout_method = "rembg"
+    except (ImportError, OSError, RuntimeError):
+        image = remove_background(source, "chroma")
+        cutout_method = "chroma"
     image.save(output)
     record = output.with_suffix(".generation.json")
     record.write_text(
@@ -197,8 +243,11 @@ def _generate_asset(
                 "endpoint_configured": True,
                 "prompt": prompt,
                 "quality": quality,
+                "cutout_method": cutout_method,
                 "raw": raw.name,
                 "output": output.name,
+                "raw_sha256": hashlib.sha256(raw.read_bytes()).hexdigest(),
+                "output_sha256": hashlib.sha256(output.read_bytes()).hexdigest(),
             },
             ensure_ascii=False,
             indent=2,

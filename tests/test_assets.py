@@ -124,4 +124,21 @@ def test_generation_record_omits_endpoint_and_absolute_paths(
 def test_landmark_prompt_keeps_names_out_of_rendered_text():
     prompt = landmark_prompt("杭州", "西湖")
     assert "杭州" in prompt and "西湖" in prompt
-    assert "No city name" in prompt
+    assert "no city name" in prompt
+    assert "#FF00FF" in prompt
+    assert "no flags" in prompt
+    assert "summer afternoon daylight" in prompt
+
+
+def test_magenta_chroma_preserves_green_and_cyan_subject_colors():
+    image = Image.new("RGB", (64, 64), (255, 0, 255))
+    for x in range(16, 48):
+        for y in range(16, 32):
+            image.putpixel((x, y), (20, 180, 60))
+        for y in range(32, 48):
+            image.putpixel((x, y), (30, 180, 220))
+
+    result = remove_background(image, "chroma")
+
+    assert result.size == (32, 32)
+    assert result.getchannel("A").getextrema() == (255, 255)

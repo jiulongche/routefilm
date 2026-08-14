@@ -4,14 +4,19 @@
 - Confirm every routed leg; investigate straight-line fallbacks.
 - Confirm Web Mercator proportions from opening through ending.
 - Confirm the full-route overview contains all required geography without clipping or excessive empty space.
+- Confirm the opening shows the complete route, dynamic route summary, start/end labels, and initial progress state.
 - Confirm labels appear, remain readable, and do not cover the active marker unnecessarily.
 - Confirm long legs use a higher camera and dense clusters use close views.
 - Confirm heading follows displacement without side-slip.
 - Confirm ferry boarding and exiting are readable in both directions.
 - Confirm first landmarks enlarge and repeat landmarks do not replay.
+- Confirm pending landmarks are gray, visited landmarks remain on the map, and arrival thumbnails appear in the status panel.
 - Confirm the status panel remains outside the map.
+- Confirm the direction arrow remains visible in the travel status panel.
 - Decode the entire video and inspect black-frame results.
 - Inspect opening, first arrival, shortest leg, longest leg, ferry, repeat visit, and ending keyframes.
 - Keep `© OpenStreetMap contributors` visible when OSM data or tiles are used.
 - Keep music source and license sidecars; verify attribution text.
 - Remove secrets, tile caches, frame caches, downloaded audio, and unclear-license assets before publishing.
+- Confirm the final run manifest is complete, the requested output points to it, and prior run directories remain intact.
+- Publish the same requested output path twice and confirm the latest symlink changes without turning the prior run artifact into a symlink or modifying its hash.

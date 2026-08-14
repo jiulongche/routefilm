@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import importlib.util
+import os
 import shutil
 import sys
+from pathlib import Path
 
 
 def main() -> int:
@@ -16,6 +18,7 @@ def main() -> int:
         image_url, image_key = bool(endpoint), bool(key)
     except ImportError:
         image_url = image_key = False
+    model_dir = Path(os.getenv("U2NET_HOME", "~/.u2net")).expanduser()
     checks = {
         "python>=3.10": sys.version_info >= (3, 10),
         "ffmpeg": shutil.which("ffmpeg") is not None,
@@ -24,6 +27,8 @@ def main() -> int:
         "Pillow": importlib.util.find_spec("PIL") is not None,
         "PyYAML": importlib.util.find_spec("yaml") is not None,
         "rembg(optional)": importlib.util.find_spec("rembg") is not None,
+        "onnxruntime(optional)": importlib.util.find_spec("onnxruntime") is not None,
+        "rembg model cache(optional)": model_dir.is_dir() and any(model_dir.glob("*.onnx")),
         "GPT Image URL(optional)": image_url,
         "GPT Image key(optional)": image_key,
         "GPT Image generation(optional)": image_url and image_key,

@@ -18,8 +18,9 @@ Ask exactly one question at a time. Prefer the agent product's native structured
    - `黑色电动 SUV`: bundled, logo-free vehicle with warm-gold map-readable accents.
    - `自定义载具`: user image or GPT Image 2 after configuration and prompt review.
 3. When `自定义载具` is selected, ask one source question. Put `使用已有图片` first. Include GPT Image 2 generation only when the capability check passes; otherwise offer `先配置生图服务` as a non-generation path.
-4. Run `routefilm image status`, then ask only: “到站时需要展示城市地标吗？”
-5. Once landmark mode is resolved, infer one concise title from the route and any known season or trip theme, then ask only: “片名怎么设置？” Offer `采用推荐标题《具体标题》（推荐）`, `自定义标题`, and `Road Trip`. Show the actual recommendation rather than “自动生成标题”. Ask for exact text in a separate free-text question only after the custom choice.
+4. Check how many unique route cities exist in RouteFilm's built-in landmark catalog, then ask only: “到站地标用哪种来源？” Offer `使用内置全国地标（推荐）`, `自定义地标`, and `不展示`. State partial coverage in the first option when necessary.
+5. If the user chooses custom landmarks, ask one separate source question. Offer existing images first. Run `routefilm image status`; offer generation only when enabled, otherwise offer setup.
+6. Once landmark mode is resolved, infer one concise title from the route and any known season or trip theme, then ask only: “片名怎么设置？” Offer `采用推荐标题《具体标题》（推荐）`, `自定义标题`, and `Road Trip`. Show the actual recommendation rather than “自动生成标题”. Ask for exact text in a separate free-text question only after the custom choice.
 
 Do not treat the ferry as a whole-route marker choice; mention after marker selection that recognized ferry legs switch automatically. Infer other sensible defaults. Ask one follow-up at a time only when a place-name ambiguity or external cost blocks progress.
 
@@ -39,12 +40,9 @@ Fetch route geometry and inspect fallback legs. The Haikou-Xuwen pair is classif
 
 ## Landmark decision
 
-Adapt the choices to actual capability:
+Prefer the bundled offline library when it covers the route. It includes provincial-level representative cities and the original production route. Set `video.landmarks: auto`; explicit `landmark_asset` values override matching built-ins. Set `video.landmarks: none` only when the user chooses no landmarks.
 
-- When `generation_enabled` is true: `智能推荐并生成（推荐）`, `不展示`, `使用已有图片`.
-- When `generation_enabled` is false: `不展示（推荐）`, `使用已有图片`, `先配置生图服务`.
-
-Never offer automatic generation when no image-generation system is available. Generate one asset per unique city and reuse it for repeated visits. Before paid generation, show the landmark list and prompts for approval.
+Never offer automatic generation when no image-generation system is available. Generate one asset per unique uncovered city and reuse it for repeated visits. Before paid generation, show the landmark list and every complete prompt for approval.
 
 When the user chooses `先配置生图服务`, pause all image-dependent work and stay in setup:
 
@@ -66,6 +64,7 @@ Use these gates in order:
 5. Repeated-stop sample: first visit showcases; later visit pulses only.
 6. Silent master: verify the map before adding audio.
 7. Music branch: after the silent master passes, ask only whether to keep it silent, search licensed music, or use user-supplied audio.
+8. Version review: use `routefilm runs list` and compare prior runs when feedback refers to an earlier look.
 
 ## Full render
 
@@ -76,6 +75,7 @@ routefilm fetch examples/china-coastal-demo.yaml
 routefilm poster examples/china-coastal-demo.yaml --output build/poster.jpg
 routefilm render examples/china-coastal-demo.yaml
 routefilm qa output/road-trip.mp4 --output build/qa.json
+routefilm runs list --workspace .
 ```
 
 Expect public OSM and OSRM services to be unsuitable for bulk production. Use a hosted or self-managed provider and configure the URLs for repeated or commercial workloads.
@@ -91,5 +91,6 @@ Keep these outputs:
 - optional music mux;
 - QA JSON;
 - credits and map attribution.
+- immutable `runs/<run-id>/` directory, manifest, and `latest.json` pointer;
 
 Do not deliver tile caches, frame caches, API keys, generated raw requests containing secrets, or third-party music without redistribution rights.

@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "苏州",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 85.14,
+  "output": "output/arrival-landmarks/formal/raw/24-suzhou-humble-administrator.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Suzhou, China: Humble Administrator's Garden\nSubject details: white walls and dark tiled roofs framing a lotus pond, one elegant waterside pavilion, zigzag stone bridge and refined Jiangnan garden rocks; accurate restrained classical-garden composition",
+  "packaged_asset": {
+    "sha256": "f6274d45d7a1c164cc042f3cba1212a544167e1b03c1ca1c15abf210700f5701",
+    "bytes": 324902,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

@@ -1,0 +1,5 @@
+The bundled RouteFilm landmark images are original AI-assisted production assets
+released under Creative Commons Attribution 4.0 International (CC BY 4.0).
+
+Attribution: RouteFilm contributors, https://github.com/jiulongche/routefilm
+License: https://creativecommons.org/licenses/by/4.0/

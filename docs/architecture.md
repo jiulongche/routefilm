@@ -15,7 +15,7 @@ ordered stops
     │       │
     │       └─ labels + landmarks + marker + external status panel
     │
-    └─ raw RGB frames ── FFmpeg ── silent master
+    └─ raw RGB frames ── FFmpeg partial ── decode check ── immutable run master
                                       │
 licensed music manifest ── mix ───────┴─ muxed edition
                                       │
@@ -32,6 +32,8 @@ licensed music manifest ── mix ───────┴─ muxed edition
 - `ferry.py`: direction-neutral sea-gap detection and stage timing.
 - `tiles.py`: small raster tile cache and compositor.
 - `renderer.py`: frame composition and FFmpeg streaming.
+- `landmarks.py`: bundled offline landmark catalog and asset resolution.
+- `runs.py`: immutable run manifests, asset hashes, atomic latest publication, and comparisons.
 - `assets.py`: bundled arrow/unbranded black SUV/ferry presets, protected GPT Image 2 vehicle/landmark generation, cutout.
 - `music.py`: licensed search, provenance download, analysis, mix, mux.
 - `qa.py`: stream probe, full decode, and black-frame detection.

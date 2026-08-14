@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "上海",
+  "source": "output/arrival-landmarks/pilot/raw/03-shanghai-lujiazui.png",
+  "output": "output/arrival-landmarks/formal/raw/26-shanghai-lujiazui.png",
+  "packaged_asset": {
+    "sha256": "74116e676666bfe3383b3b6a73f030636f600a686b02fea837244e649f08689d",
+    "bytes": 228840,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

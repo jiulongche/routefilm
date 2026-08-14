@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "周口",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 66.37,
+  "output": "output/arrival-landmarks/formal/raw/18-zhoukou-taihao.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Zhoukou, China: Taihao Mausoleum\nSubject details: a solemn symmetrical imperial-style ancestral complex with a red gate, golden-green tiled roofs, central stone path, old cypress trees and one restrained ceremonial arch; accurate temple axis",
+  "packaged_asset": {
+    "sha256": "eb0efd674fd494f9b0fbb2d9bfbe6df14c6901b682ff1fd758d7a8ee840c46c0",
+    "bytes": 335478,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "开平",
+  "source": "output/arrival-landmarks/pilot/raw/04-kaiping-diaolou.png",
+  "output": "output/arrival-landmarks/formal/raw/34-kaiping-diaolou.png",
+  "packaged_asset": {
+    "sha256": "66b94438d0b8bb3b7445367a2edb515fad871e969927dfc2adf4eff9e7cab607",
+    "bytes": 298534,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}
