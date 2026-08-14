@@ -64,17 +64,24 @@ routefilm image status
 
 The result must report both `url_configured: true` and `key_configured: true`. The generator refuses to run when either value is missing.
 
+Prepare a reusable user-level config when a value is missing:
+
+```bash
+routefilm image configure --base-url https://api.openai.com/v1
+routefilm image status
+```
+
+The configure command prints the private config path and never accepts an API key argument. Put `ROUTEFILM_IMAGE_API_KEY` in that file locally, or keep using `OPENAI_API_KEY` from the process environment. RouteFilm automatically reads the nearest project `.env` and `~/.config/routefilm/.env`; use `--scope project` to prepare the former. Process environment values take precedence.
+
 Review a GPT Image 2 prompt before generating:
 
 ```bash
 routefilm vehicle prompt "一辆黑色电动跨界 SUV，车顶玻璃清晰"
 ```
 
-Configure credentials through the environment, then generate:
+After the status check passes, generate:
 
 ```bash
-export ROUTEFILM_IMAGE_BASE_URL="https://api.openai.com/v1"
-export ROUTEFILM_IMAGE_API_KEY="..."
 routefilm vehicle generate "一辆黑色电动跨界 SUV，车顶玻璃清晰" \
   --output assets/vehicle.png
 ```

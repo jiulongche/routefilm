@@ -4,14 +4,18 @@
 from __future__ import annotations
 
 import importlib.util
-import os
 import shutil
 import sys
 
 
 def main() -> int:
-    image_url = bool(os.getenv("ROUTEFILM_IMAGE_BASE_URL"))
-    image_key = bool(os.getenv("ROUTEFILM_IMAGE_API_KEY") or os.getenv("OPENAI_API_KEY"))
+    try:
+        from routefilm.image_config import resolve_image_credentials
+
+        endpoint, key = resolve_image_credentials()
+        image_url, image_key = bool(endpoint), bool(key)
+    except ImportError:
+        image_url = image_key = False
     checks = {
         "python>=3.10": sys.version_info >= (3, 10),
         "ffmpeg": shutil.which("ffmpeg") is not None,

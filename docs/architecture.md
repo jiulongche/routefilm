@@ -36,10 +36,10 @@ licensed music manifest ── mix ───────┴─ muxed edition
 - `music.py`: licensed search, provenance download, analysis, mix, mux.
 - `qa.py`: stream probe, full decode, and black-frame detection.
 
-Provider URLs live in YAML or environment configuration. Core motion logic has no network dependency and is unit tested with synthetic routes.
+Provider URLs live in YAML or RouteFilm's environment/dotenv configuration resolver. Core motion logic has no network dependency and is unit tested with synthetic routes.
 
 ## Extension points
 
-Add a tile or router provider behind the existing URL templates. Add music search providers by returning `MusicResult`. Keep credentials in environment variables and return source/license metadata with every remote asset.
+Add a tile or router provider behind the existing URL templates. Add music search providers by returning `MusicResult`. Keep credentials in process environment or ignored private dotenv files, and return source/license metadata with every remote asset.
 
 Vector tiles, MapLibre, GCJ-02 provider adapters, richer collision solving, and automated storyboard extraction are appropriate future modules. They should not weaken the simple Pillow/FFmpeg reference implementation.

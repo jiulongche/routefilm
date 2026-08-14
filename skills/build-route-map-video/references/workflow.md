@@ -45,6 +45,15 @@ Adapt the choices to actual capability:
 
 Never offer automatic generation when no image-generation system is available. Generate one asset per unique city and reuse it for repeated visits. Before paid generation, show the landmark list and prompts for approval.
 
+When the user chooses `先配置生图服务`, pause all image-dependent work and stay in setup:
+
+1. Run `routefilm image status` and identify whether the URL, key, or both are missing.
+2. If the URL is missing, ask one endpoint question: official OpenAI, a custom compatible endpoint, or leave setup. After the answer, run `routefilm image configure --base-url URL`. If the URL is already configured but the key is missing, run `routefilm image configure` without a URL so it prepares the private file from the existing endpoint. The default user-level file is reusable across projects.
+3. Show only the config path printed by the command. If the key is missing, ask the user to place `ROUTEFILM_IMAGE_API_KEY` there locally or set `OPENAI_API_KEY` in the process, then confirm. Never ask for the value in chat and never pass it as a command argument.
+4. After confirmation, rerun `routefilm image status`. If enabled, ask the landmark question again with the generation option. If still disabled, explain only the remaining missing category and stay in setup.
+
+Do not prepare an arbitrary config format, do not assume a default endpoint, and do not continue rendering a no-landmark version while setup is active. Only leave setup when generation becomes available or the user explicitly chooses an existing-image or no-landmark path.
+
 ## Review gates
 
 Use these gates in order:

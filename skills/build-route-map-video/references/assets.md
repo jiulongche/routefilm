@@ -31,7 +31,25 @@ Use strict top-down orthographic composition, one object, nose/bow pointing righ
 routefilm vehicle prompt "a black electric crossover with falcon-wing silhouette"
 ```
 
-Configure credentials only through the environment:
+## Image service setup
+
+RouteFilm resolves image settings in this order without mutating the process environment:
+
+1. explicit function arguments used by integrations;
+2. `ROUTEFILM_IMAGE_BASE_URL` plus `ROUTEFILM_IMAGE_API_KEY` or `OPENAI_API_KEY` in the process;
+3. the file named by `ROUTEFILM_ENV_FILE` when set;
+4. the nearest `.env` from the current directory upward;
+5. `~/.config/routefilm/.env` or the matching `XDG_CONFIG_HOME` location.
+
+Prepare the user-level config, which is reusable and kept outside the repository:
+
+```bash
+routefilm image configure --base-url https://api.openai.com/v1
+```
+
+Omit `--base-url` when an endpoint is already available and only the key is missing. Use `--scope project` only when the setting should stay with one checkout. The command prints the exact file path, writes the URL and an empty key slot, preserves unrelated dotenv values, and restricts the file to the current user. It deliberately has no key argument so credentials cannot enter shell history. The user must place the key in the reported file locally or expose it through the process environment; never ask them to paste it into chat.
+
+The resulting values are equivalent to:
 
 ```text
 ROUTEFILM_IMAGE_BASE_URL=https://api.openai.com/v1

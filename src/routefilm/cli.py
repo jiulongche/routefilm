@@ -19,6 +19,7 @@ from .assets import (
 )
 from .config import MapSettings, load_project
 from .geocoding import geocode_route
+from .image_config import configure_image_environment
 from .music import (
     DEFAULT_ALLOWED_LICENSES,
     analyze_audio,
@@ -100,6 +101,13 @@ def build_parser() -> argparse.ArgumentParser:
     image = commands.add_parser("image", help="inspect GPT Image 2 configuration")
     image_commands = image.add_subparsers(dest="image_command", required=True)
     image_commands.add_parser("status", help="report URL/key readiness without showing values")
+    image_configure = image_commands.add_parser(
+        "configure", help="prepare a private dotenv file without accepting a key on the command line"
+    )
+    image_configure.add_argument(
+        "--base-url", help="required only when no endpoint is already configured"
+    )
+    image_configure.add_argument("--scope", choices=["user", "project"], default="user")
 
     landmark = commands.add_parser("landmark", help="create city landmark assets")
     landmark_commands = landmark.add_subparsers(dest="landmark_command", required=True)
@@ -182,7 +190,26 @@ def _dispatch(args: argparse.Namespace) -> int:
         else:
             print(cutout_file(_path(args.input), _path(args.output), args.method))
     elif args.command == "image":
-        print(json.dumps(image_api_status(), ensure_ascii=False, indent=2))
+        if args.image_command == "status":
+            print(json.dumps(image_api_status(), ensure_ascii=False, indent=2))
+        else:
+            path = configure_image_environment(args.base_url, scope=args.scope)
+            status = image_api_status()
+            print(
+                json.dumps(
+                    {
+                        "config_path": str(path),
+                        **status,
+                        "next_step": (
+                            "configuration ready"
+                            if status["generation_enabled"]
+                            else "set ROUTEFILM_IMAGE_API_KEY in this file locally, then rerun status"
+                        ),
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                )
+            )
     elif args.command == "landmark":
         if args.landmark_command == "prompt":
             print(landmark_prompt(args.city, args.landmark))

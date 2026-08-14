@@ -34,6 +34,8 @@ Offer the bundled generated arrow and unbranded black electric SUV. Use the arro
 
 Always resolve the landmark choice before building arrivals. Read the `generation_enabled` field from `routefilm image status`. If true, ask “到站时需要展示城市地标吗？” with `智能推荐并生成（推荐）`, `不展示`, and `使用已有图片`. If false, do not offer generation; use `不展示（推荐）`, `使用已有图片`, and `先配置生图服务`. Treat repeated cities as one generated landmark asset. Do not generate landmark images until the proposed landmark list and prompts are approved.
 
+If the user selects `先配置生图服务`, enter a blocking setup state. Do not create an ad hoc empty file and continue a no-landmark branch in parallel. Read the image-service setup in [assets.md](references/assets.md), determine which category is missing, and ask only the next required setup question. Use `routefilm image configure` for the URL, never accept a key in chat or a command argument, and wait while the user places the key locally in the reported private config file or process environment. Rerun `routefilm image status` after confirmation. Return to the landmark question only when `generation_enabled` becomes true; remain in setup or explicitly let the user choose to leave setup otherwise.
+
 ## Build in review gates
 
 1. Run the preflight script in `scripts/preflight.py`.
@@ -67,8 +69,8 @@ Set `video.marker` to `arrow` or `black-suv`; both are bundled and require no ge
 
 1. Draft the exact prompt with `routefilm vehicle prompt` and show it for approval.
 2. State that generation uses only `gpt-image-2` and may incur API cost.
-3. Run `routefilm image status`. Require both `url_configured` and `key_configured`; if either is false, do not call image generation. Explain which configuration category is missing without displaying values, then continue with bundled/user-provided assets or skip generation.
-4. Read the endpoint from `ROUTEFILM_IMAGE_BASE_URL` and the key from `ROUTEFILM_IMAGE_API_KEY` or `OPENAI_API_KEY`. Never request that a key be pasted into chat, YAML, Markdown, shell history, or source code.
+3. Run `routefilm image status`. Require both `url_configured` and `key_configured`; if either is false, do not call image generation. Explain which configuration category is missing without displaying values, then ask whether to enter the blocking setup flow, use a bundled/user-provided asset, or skip generation.
+4. Read the endpoint and key through RouteFilm's configuration resolver. It checks explicit process environment first, then a selected dotenv file, the nearest project `.env`, and the private user config. Never request that a key be pasted into chat, YAML, Markdown, shell history, or source code.
 5. Run `routefilm vehicle generate` only after approval.
 6. Prefer local `rembg` cutout. Fall back to chroma keying, retain the raw image, and inspect the alpha edge at full size.
 

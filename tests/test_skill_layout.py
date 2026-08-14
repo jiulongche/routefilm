@@ -41,3 +41,5 @@ def test_skill_asks_one_adaptive_choice_question_at_a_time():
     assert "AskUserQuestion" in body
     assert "generation_enabled" in body
     assert "do not offer generation" in body
+    assert "blocking setup state" in body
+    assert "Do not create an ad hoc empty file" in body

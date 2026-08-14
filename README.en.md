@@ -33,7 +33,7 @@ Or ask Claude Code:
 
 The agent asks exactly one question at a time: ordered stops first, then a structured marker choice, then a landmark choice adapted to the available image-generation capability. Recommended options appear first with short consequences and a free-form Other path. Recognized ferry legs switch to the bundled roll-on/roll-off ferry automatically.
 
-Before asking about generated landmarks, RouteFilm verifies that both the image API URL and key are configured without displaying either value. It offers automatic generation only when the capability is actually available.
+Before asking about generated landmarks, RouteFilm verifies that both the image API URL and key are configured without displaying either value. It offers automatic generation only when the capability is actually available. Choosing setup pauses the landmark branch, uses a private user or project dotenv file, and returns to the landmark choice only after the capability check passes.
 
 RouteFilm resolves, ranks, and caches coordinates automatically; users never enter longitude or latitude. The agent asks which named place was intended only when equally plausible matches remain.
 

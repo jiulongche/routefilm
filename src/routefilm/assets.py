@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import base64
 import json
-import os
 import urllib.request
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
+
+from .image_config import resolve_image_credentials
 
 IMAGE_MODEL = "gpt-image-2"
 DATA_DIR = Path(__file__).with_name("data")
@@ -76,8 +77,7 @@ def image_api_status(
     api_key: str | None = None,
 ) -> dict[str, bool | str]:
     """Report image-generation readiness without exposing credential values."""
-    endpoint = base_url or os.getenv("ROUTEFILM_IMAGE_BASE_URL")
-    key = api_key or os.getenv("ROUTEFILM_IMAGE_API_KEY") or os.getenv("OPENAI_API_KEY")
+    endpoint, key = resolve_image_credentials(base_url=base_url, api_key=api_key)
     return {
         "model": IMAGE_MODEL,
         "url_configured": bool(endpoint),
@@ -90,8 +90,7 @@ def _image_api_credentials(
     base_url: str | None,
     api_key: str | None,
 ) -> tuple[str, str]:
-    endpoint = base_url or os.getenv("ROUTEFILM_IMAGE_BASE_URL")
-    key = api_key or os.getenv("ROUTEFILM_IMAGE_API_KEY") or os.getenv("OPENAI_API_KEY")
+    endpoint, key = resolve_image_credentials(base_url=base_url, api_key=api_key)
     missing = []
     if not endpoint:
         missing.append("ROUTEFILM_IMAGE_BASE_URL")

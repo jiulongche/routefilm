@@ -2,7 +2,7 @@
 
 Report security issues through the repository's [private security-advisory flow](https://github.com/jiulongche/routefilm/security/advisories/new) rather than opening a public issue containing credentials or private route data.
 
-RouteFilm reads optional image credentials only from `ROUTEFILM_IMAGE_API_KEY` or `OPENAI_API_KEY`. Do not place keys in project YAML, Markdown, source code, command examples with real values, or generated manifests.
+RouteFilm reads optional image credentials from the process or parsed dotenv files: the selected `ROUTEFILM_ENV_FILE`, the nearest project `.env`, or the private user config at `~/.config/routefilm/.env`. Process values take precedence. Do not place keys in project YAML, Markdown, source code, command arguments, examples with real values, or generated manifests. Project `.env` files are ignored by Git; user-level files created by `routefilm image configure` are restricted to the current user.
 
 Generation records intentionally omit credential values, endpoint URLs, and absolute local paths. Keep raw prompts and generated records private unless they have been reviewed for publication.
 
