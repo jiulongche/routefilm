@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 福州, China: 三坊七巷\nSubject details: A compact Three Lanes and Seven Alleys streetscape with white firewalls, dark tiled roofs, narrow stone lane, and one restrained banyan tree.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "45-fuzhou-three-lanes-chroma.png",
+  "output": "45-fuzhou-three-lanes.png",
+  "city": "福州",
+  "landmark": "三坊七巷",
+  "builtin_asset": "45-fuzhou-three-lanes.webp",
+  "packaged_asset": {
+    "sha256": "8ba01c5500e59dc58922cc0c7de754366d0fe49589732918cdaf39d5764c19ee",
+    "bytes": 272020,
+    "width": 768,
+    "height": 621,
+    "format": "WEBP"
+  }
+}

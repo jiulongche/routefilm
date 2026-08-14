@@ -1,0 +1,28 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 武汉, China: 黄鹤楼\nSubject details: The five-story Yellow Crane Tower with golden upturned roofs on a compact bright green garden terrain island with stone stairs and restrained trees; every plaque and signboard must be blank and unlettered, with no river, bridge, skyline, or detached background element.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, no caption, no letters, no logo, no watermark, no people, no vehicles,\nno flags, no map, no road, no frame, no cast shadow, no contact shadow, no background scenery,\nno gradient, and no cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "chroma_soft_matte_with_local_plaque_cleanup",
+  "raw": "49-wuhan-yellow-crane-tower-20260814-143055-chroma.png",
+  "output": "49-wuhan-yellow-crane-tower-20260814-143055.png",
+  "raw_sha256": "8d08df400dfae27436407a4aaeae6ad6892041db3f3d8f1c970a89a12f67208d",
+  "output_sha256": "788a899d0fe42ee30357d2fe5a45aa0e1afa3f694179e35ecd82ad732c525033",
+  "city": "武汉",
+  "landmark": "黄鹤楼",
+  "builtin_asset": "49-wuhan-yellow-crane-tower.webp",
+  "postprocess": {
+    "source": "49-wuhan-yellow-crane-tower-20260814-143055-chroma.png",
+    "source_sha256": "8d08df400dfae27436407a4aaeae6ad6892041db3f3d8f1c970a89a12f67208d",
+    "method": "border auto-key, soft matte 12-220, magenta despill, 1px edge contract, blank plaque cleanup",
+    "intermediate_sha256": "87b722f8927f2ff35906f2bb8ec64dfaf02c59d56bacee2d2f0dff4e1a2e5b63"
+  },
+  "packaged_asset": {
+    "sha256": "82f2087837521e024ffe538c97517ee4c24cb440bdc1233aebe1ad69cbf4977b",
+    "bytes": 218160,
+    "width": 688,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

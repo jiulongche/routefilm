@@ -20,6 +20,7 @@ In YAML, use:
 ```yaml
 video:
   marker: black-suv  # arrow or black-suv
+  landmarks: auto    # auto or none
   show_ferry: true
 ```
 
@@ -73,8 +74,12 @@ python -m pip install -e ".[cutout]"
 routefilm vehicle cutout raw.png --method rembg --output transparent.png
 ```
 
-Use `--method chroma` when a clean `#00FF00` background is available. If the model adds a green gradient, use the imagegen Skill's `remove_chroma_key.py` with border sampling, soft matte, despill, and a one-pixel edge contraction. Inspect windows, roof rails, mirrors, ferry deck openings, and thin edges at 100% zoom.
+The production extra installs `rembg[cpu]`, which includes the ONNX runtime. Preflight reports the `rembg` package, runtime, and local model cache separately. Do not claim cutout readiness from the Python package alone.
+
+Use `--method chroma` only when a clean flat background is available. Generated prompts use `#FF00FF` so natural green foliage and cyan water survive the fallback. Inspect windows, roof rails, mirrors, ferry deck openings, water, vegetation, and thin edges at 100% zoom.
 
 ## Landmarks
 
-Prefer a recognizable single structure with a simple silhouette. Propose the complete city-to-landmark list before generating and create only one image per unique city. Review a prompt with `routefilm landmark prompt CITY LANDMARK`; after the image configuration check and approval, use `routefilm landmark generate CITY LANDMARK --output FILE`. Do not ask the image model to render the city name; add names with the renderer for spelling and style consistency. Retain provenance for generated and third-party landmark assets.
+RouteFilm bundles an offline curated library of 63 unique cities covering provincial-level representative cities and the original 35-city production route. Prefer it when coverage is sufficient; it needs no URL, key, or generation cost. Explicit `landmark_asset` files override built-ins.
+
+For uncovered places, prefer a recognizable single structure with a simple silhouette. Propose the complete city-to-landmark list before generating and create only one image per unique city. Review every complete prompt with `routefilm landmark prompt CITY LANDMARK`; after the image configuration check and approval, use `routefilm landmark generate CITY LANDMARK --output FILE`. Do not ask the image model to render names; add city and landmark names with the renderer. Retain raw, cutout, compressed asset, prompt, model, cutout method, and hashes.

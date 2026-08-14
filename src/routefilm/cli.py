@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
+import subprocess
 import urllib.error
 from pathlib import Path
 
@@ -32,6 +34,7 @@ from .music import (
 from .qa import inspect
 from .renderer import render_poster, render_video
 from .routing import fetch_routes
+from .runs import begin_run, compare_runs, complete_run, fail_run, list_runs
 
 PROJECT_TEMPLATE = """# Just list the places in travel order. Coordinates resolve automatically.
 route:
@@ -47,6 +50,7 @@ video:
   height: 1280
   fps: 15
   # marker: arrow        # arrow or black-suv
+  # landmarks: auto      # auto uses bundled/explicit assets; none disables them
   # show_ferry: true     # automatic on recognized ferry legs
   # vehicle_asset: assets/custom-vehicle.png  # overrides marker
   # ferry_asset: assets/ferry.png             # overrides bundled ferry
@@ -55,7 +59,7 @@ video:
 
 
 def _path(value: str) -> Path:
-    return Path(value).expanduser().resolve()
+    return Path(os.path.abspath(Path(value).expanduser()))
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -82,6 +86,15 @@ def build_parser() -> argparse.ArgumentParser:
     render = commands.add_parser("render", help="render a silent H.264 route video")
     render.add_argument("project")
     render.add_argument("--refresh", action="store_true")
+
+    runs = commands.add_parser("runs", help="inspect immutable render history")
+    run_commands = runs.add_subparsers(dest="runs_command", required=True)
+    run_list = run_commands.add_parser("list", help="list previous runs")
+    run_list.add_argument("--workspace", default=".")
+    run_compare = run_commands.add_parser("compare", help="build a visual comparison sheet")
+    run_compare.add_argument("run_ids", nargs="+")
+    run_compare.add_argument("--workspace", default=".")
+    run_compare.add_argument("--output", required=True)
 
     vehicle = commands.add_parser("vehicle", help="create route marker assets")
     vehicle_commands = vehicle.add_subparsers(dest="vehicle_command", required=True)
@@ -173,11 +186,42 @@ def _dispatch(args: argparse.Namespace) -> int:
             raise ValueError("route must contain at least two place names")
         print(geocode_route(names, _path(args.output), country_code=args.country_code, user_agent=args.user_agent))
     elif args.command == "poster":
-        print(render_poster(load_project(args.project), _path(args.output), args.refresh))
+        config = load_project(args.project)
+        requested = _path(args.output)
+        run = begin_run(config, "poster", requested)
+        try:
+            suffix = requested.suffix or ".jpg"
+            artifact = render_poster(
+                config, run.output_dir / f"poster{suffix}", args.refresh
+            )
+            print(complete_run(run, artifact, requested))
+            print(f"run: {run.path}")
+        except Exception as error:
+            fail_run(run, error)
+            raise
     elif args.command == "render":
         if not shutil.which("ffmpeg"):
             raise RuntimeError("ffmpeg is required")
-        print(render_video(load_project(args.project), args.refresh))
+        config = load_project(args.project)
+        run = begin_run(config, "render", config.video.output)
+        try:
+            artifact = render_video(
+                config,
+                args.refresh,
+                output_override=run.output_dir / config.video.output.name,
+            )
+            report = inspect(artifact, full_decode=False)
+            print(complete_run(run, artifact, config.video.output, qa_report=report))
+            print(f"run: {run.path}")
+        except Exception as error:
+            fail_run(run, error)
+            raise
+    elif args.command == "runs":
+        workspace = _path(args.workspace)
+        if args.runs_command == "list":
+            print(json.dumps(list_runs(workspace), ensure_ascii=False, indent=2))
+        else:
+            print(compare_runs(workspace, args.run_ids, _path(args.output)))
     elif args.command == "vehicle":
         if args.vehicle_command == "default":
             print(save_default_arrow(_path(args.output)))
@@ -257,6 +301,7 @@ def main(argv: list[str] | None = None) -> int:
         KeyError,
         PermissionError,
         RuntimeError,
+        subprocess.CalledProcessError,
         TypeError,
         ValueError,
         urllib.error.URLError,

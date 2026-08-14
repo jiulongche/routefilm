@@ -17,7 +17,7 @@ class Camera:
 
 def fit_geometry(
     points: Sequence[Point],
-    distance_km: float,
+    distance_km: float | None,
     viewport: tuple[int, int],
     padding: tuple[float, float] = (0.68, 0.68),
 ) -> Camera:
@@ -27,14 +27,15 @@ def fit_geometry(
     span_y = max(max(ys) - min(ys), 1e-7)
     width, height = viewport
     zoom = math.log2(min(width * padding[0] / (256 * span_x), height * padding[1] / (256 * span_y)))
-    if distance_km > 420:
-        zoom -= 0.72
-    elif distance_km > 280:
-        zoom -= 0.32
-    elif distance_km < 55:
-        zoom += 0.58
-    elif distance_km < 120:
-        zoom += 0.34
+    if distance_km is not None:
+        if distance_km > 420:
+            zoom -= 0.72
+        elif distance_km > 280:
+            zoom -= 0.32
+        elif distance_km < 55:
+            zoom += 0.58
+        elif distance_km < 120:
+            zoom += 0.34
     center = lonlat_from_world((min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2)
     return Camera(center, clamp(zoom, 4.6, 11.5))
 
@@ -83,4 +84,4 @@ def route_overview_camera(
 
     # Total road distance is intentionally ignored here: loops can be long while
     # remaining geographically compact. The bounding geometry determines framing.
-    return fit_geometry(points, 0, viewport, (0.80, 0.80))
+    return fit_geometry(points, None, viewport, (0.80, 0.80))

@@ -1,0 +1,380 @@
+[
+  {
+    "city": "海口",
+    "landmark": "骑楼老街",
+    "asset": "01-haikou-qilou.webp",
+    "subject": "A recognizable warm-white Nanyang arcade street corner with repeated arched colonnades, ochre roof details, one restrained coconut palm, and Haikou's historic overseas-Chinese architectural identity."
+  },
+  {
+    "city": "徐闻",
+    "landmark": "灯楼角与菠萝田",
+    "asset": "02-xuwen-lighthouse-pineapple.webp",
+    "subject": "Xuwen's white lighthouse at the Qiongzhou Strait beside geometric pineapple fields, tropical greenery, and a compact blue coastline."
+  },
+  {
+    "city": "湛江",
+    "landmark": "湖光岩",
+    "asset": "03-zhanjiang-huguangyan.webp",
+    "subject": "The circular Huguangyan volcanic maar lake with deep blue water, a dark volcanic rim, subtropical forest, and one restrained lakeside pavilion."
+  },
+  {
+    "city": "南宁",
+    "landmark": "青秀山龙象塔",
+    "asset": "04-nanning-qingxiushan.webp",
+    "subject": "The multi-story Longxiang Pagoda rising above lush Qingxiu Mountain, banyan trees, and a restrained lake edge."
+  },
+  {
+    "city": "河池",
+    "landmark": "小三峡",
+    "asset": "05-hechi-little-gorges.webp",
+    "subject": "Steep layered karst peaks enclosing a narrow jade-green river, forested cliffs, and one tiny boat for scale."
+  },
+  {
+    "city": "都匀",
+    "landmark": "文峰塔与剑江",
+    "asset": "06-duyun-wenfeng.webp",
+    "subject": "The slender historic Wenfeng Pagoda beside the curving Jian River, a traditional stone bridge, and forested riverbanks."
+  },
+  {
+    "city": "遵义",
+    "landmark": "遵义会议会址",
+    "asset": "07-zunyi-conference-site.webp",
+    "subject": "The recognizable gray-brick Zunyi Conference residence with red-brown timber windows, tiled roof, small courtyard, and mature trees."
+  },
+  {
+    "city": "重庆",
+    "landmark": "洪崖洞",
+    "asset": "08-chongqing-hongya-cave.webp",
+    "subject": "The layered stilt-house architecture of Hongya Cave climbing a steep riverbank, with warm timber, gray roofs, and the river bend below in daylight."
+  },
+  {
+    "city": "汉中",
+    "landmark": "古汉台",
+    "asset": "09-hanzhong-guhantai.webp",
+    "subject": "The elevated Ancient Hantai complex with broad stone steps, dark tiled pavilion roofs, red-brown timber, and old trees."
+  },
+  {
+    "city": "杨凌",
+    "landmark": "农科城",
+    "asset": "10-yangling-agritech.webp",
+    "subject": "A modern agricultural science campus with glass greenhouse geometry, ordered crop plots, golden wheat, and restrained research architecture."
+  },
+  {
+    "city": "武功",
+    "landmark": "武功古城城隍庙",
+    "asset": "11-wugong-chenghuang-temple.webp",
+    "subject": "A Guanzhong temple gate and ceremonial archway with gray tiled roofs, restrained painted brackets, weathered brick lane, and one old locust tree."
+  },
+  {
+    "city": "乾县临平",
+    "landmark": "乾陵",
+    "asset": "12-qianxian-qianling.webp",
+    "subject": "The Qianling spirit way with a dominant blank stone stele, paired stone guardians, a straight ceremonial path, and distant Liangshan hills."
+  },
+  {
+    "city": "岐山",
+    "landmark": "周公庙",
+    "asset": "13-qishan-zhougong-temple.webp",
+    "subject": "A dignified Zhou-style temple courtyard with layered dark-tiled halls, broad stone stairs, and ancient cypress trees."
+  },
+  {
+    "city": "宝鸡",
+    "landmark": "石鼓阁",
+    "asset": "14-baoji-shigu-pavilion.webp",
+    "subject": "The tall multi-tiered Shigu Pavilion above a green Weihe riverside park with distant Qinling foothills."
+  },
+  {
+    "city": "固原",
+    "landmark": "六盘山",
+    "asset": "15-guyuan-liupanshan.webp",
+    "subject": "Layered forested Liupan Mountain ridges, a winding red trail, and one restrained memorial tower on a ridge."
+  },
+  {
+    "city": "三门峡",
+    "landmark": "黄河三门峡大坝",
+    "asset": "16-sanmenxia-dam.webp",
+    "subject": "The broad Sanmenxia concrete dam spanning ochre Yellow River water between rocky gorge slopes, with readable spillway detail."
+  },
+  {
+    "city": "许昌",
+    "landmark": "曹魏古城",
+    "asset": "17-xuchang-caowei.webp",
+    "subject": "A Han-Wei style city gate tower with layered dark eaves, warm brick walls, a short moat edge, and restrained banners without symbols."
+  },
+  {
+    "city": "周口",
+    "landmark": "太昊陵",
+    "asset": "18-zhoukou-taihao.webp",
+    "subject": "A solemn symmetrical Taihao Mausoleum complex with a red gate, golden-green tiled roofs, central stone path, and old cypress trees."
+  },
+  {
+    "city": "蚌埠",
+    "landmark": "淮河与龙子湖",
+    "asset": "19-bengbu-huaihe-longzihu.webp",
+    "subject": "A graceful Huai River bridge crossing blue water, a secondary Longzi Lake curve, green shoreline, and a restrained pearl-shaped accent."
+  },
+  {
+    "city": "南京",
+    "landmark": "中山陵",
+    "asset": "20-nanjing-sun-yatsen.webp",
+    "subject": "The iconic long central staircase through symmetrical cedar trees toward the blue-tiled Sun Yat-sen Mausoleum memorial hall and ceremonial arch."
+  },
+  {
+    "city": "扬州",
+    "landmark": "瘦西湖五亭桥",
+    "asset": "21-yangzhou-wuting-bridge.webp",
+    "subject": "The white stone Five-Pavilion Bridge with five golden-roofed pavilions spanning Slender West Lake, willow trees, and garden shoreline."
+  },
+  {
+    "city": "镇江",
+    "landmark": "金山寺",
+    "asset": "22-zhenjiang-jinshan.webp",
+    "subject": "The golden-roofed Jinshan Temple complex climbing a green hill beside the Yangtze River, with a central pagoda and layered halls."
+  },
+  {
+    "city": "无锡",
+    "landmark": "鼋头渚",
+    "asset": "23-wuxi-yuantouzhu.webp",
+    "subject": "A broad Taihu Lake edge, one elegant lakeside pavilion, summer-green trees, and layered distant lake islands without cherry blossoms."
+  },
+  {
+    "city": "苏州",
+    "landmark": "拙政园",
+    "asset": "24-suzhou-humble-administrator.webp",
+    "subject": "White walls and dark tiled roofs framing a lotus pond, an elegant waterside pavilion, zigzag stone bridge, and Jiangnan garden rocks."
+  },
+  {
+    "city": "昆山",
+    "landmark": "周庄双桥",
+    "asset": "25-kunshan-zhouzhuang.webp",
+    "subject": "The intersecting Zhouzhuang Twin Bridges over narrow Jiangnan canals, whitewashed houses, dark tiled roofs, and willow reflections."
+  },
+  {
+    "city": "上海",
+    "landmark": "陆家嘴天际线",
+    "asset": "26-shanghai-lujiazui.webp",
+    "subject": "The recognizable Lujiazui skyline with the Oriental Pearl Tower, Shanghai Tower, Jin Mao Tower, and Huangpu River curve, with no flags or text."
+  },
+  {
+    "city": "杭州",
+    "landmark": "西湖",
+    "asset": "27-hangzhou-west-lake.webp",
+    "subject": "West Lake with a recognizable stone causeway, arched bridge, willow trees, a restrained traditional pavilion, and layered green hills."
+  },
+  {
+    "city": "富阳",
+    "landmark": "富春江",
+    "asset": "28-fuyang-fuchun-river.webp",
+    "subject": "A graceful Fuchun River bend between layered green hills, a restrained riverside village, and clear distant mountain ridges."
+  },
+  {
+    "city": "衢州",
+    "landmark": "水亭门",
+    "asset": "29-quzhou-shuiting-gate.webp",
+    "subject": "The historic Shuiting Gate and gray-brick city wall above the Qu River waterfront, with dark tiled roofs, stone steps, and riverside trees."
+  },
+  {
+    "city": "抚州",
+    "landmark": "文昌里",
+    "asset": "30-fuzhou-wenchangli.webp",
+    "subject": "A compact Gan-style old street beside the Fu River, gray-brick houses, dark tiled roofs, and the recognizable Wenchang bridge element."
+  },
+  {
+    "city": "赣州",
+    "landmark": "八境台",
+    "asset": "31-ganzhou-bajingtai.webp",
+    "subject": "The multi-tiered Bajing Terrace rising from an old city wall above the meeting of two rivers, with warm-gray masonry and broad blue water."
+  },
+  {
+    "city": "韶关",
+    "landmark": "丹霞山",
+    "asset": "32-shaoguan-danxia.webp",
+    "subject": "Distinctive red sandstone Danxia cliffs above the curving Jin River, with lush subtropical greenery and layered sunlit rock faces."
+  },
+  {
+    "city": "佛山",
+    "landmark": "佛山祖庙",
+    "asset": "33-foshan-ancestral-temple.webp",
+    "subject": "A Lingnan temple hall with sweeping dark tiled roof, colorful ceramic ridge sculpture, red columns, and one restrained stone lion."
+  },
+  {
+    "city": "开平",
+    "landmark": "开平碉楼",
+    "asset": "34-kaiping-diaolou.webp",
+    "subject": "A recognizable Kaiping diaolou watchtower rising from green rice fields, combining Chinese rural masonry with restrained Western architectural details."
+  },
+  {
+    "city": "阳江",
+    "landmark": "海陵岛十里银滩",
+    "asset": "35-yangjiang-hailing-island.webp",
+    "subject": "A sweeping crescent of pale sand, clear cyan sea, a green Hailing Island headland, and two restrained white sail silhouettes."
+  },
+  {
+    "city": "北京",
+    "landmark": "故宫",
+    "asset": "36-beijing-forbidden-city.webp",
+    "subject": "A compact axial view of the Forbidden City's vermilion halls, golden tiled roofs, white marble terraces, and layered palace courtyards, without flags or text."
+  },
+  {
+    "city": "天津",
+    "landmark": "天津之眼与海河",
+    "asset": "37-tianjin-eye-haihe.webp",
+    "subject": "The Tianjin Eye Ferris wheel spanning the Hai River, with one elegant river bend and restrained historic waterfront architecture in clear daylight."
+  },
+  {
+    "city": "石家庄",
+    "landmark": "赵州桥",
+    "asset": "38-shijiazhuang-zhaozhou-bridge.webp",
+    "subject": "The historic single-arch Zhaozhou stone bridge crossing a calm river, with accurate open spandrels, willow-lined banks, and restrained North China landscape."
+  },
+  {
+    "city": "太原",
+    "landmark": "晋祠",
+    "asset": "39-taiyuan-jinci.webp",
+    "subject": "The Hall of the Holy Mother at Jinci Temple with sweeping dark eaves, red columns, an old cypress, stone channels, and a compact Shanxi courtyard."
+  },
+  {
+    "city": "呼和浩特",
+    "landmark": "大召寺",
+    "asset": "40-hohhot-dazhao-temple.webp",
+    "subject": "The white and ochre Dazhao Temple complex with layered Tibetan-Mongolian roofs, a compact courtyard, and restrained grassland-city identity."
+  },
+  {
+    "city": "沈阳",
+    "landmark": "沈阳故宫",
+    "asset": "41-shenyang-imperial-palace.webp",
+    "subject": "The recognizable Dazheng Hall and banner pavilions of Shenyang Imperial Palace, with red walls, glazed roofs, and a symmetrical stone courtyard."
+  },
+  {
+    "city": "长春",
+    "landmark": "净月潭",
+    "asset": "42-changchun-jingyuetan.webp",
+    "subject": "The blue Jingyuetan reservoir surrounded by dense summer forest, its recognizable dam and restrained lakeside tower forming a clear Changchun landscape silhouette."
+  },
+  {
+    "city": "哈尔滨",
+    "landmark": "圣索菲亚教堂",
+    "asset": "43-harbin-saint-sophia.webp",
+    "subject": "Saint Sophia Cathedral with its green onion domes, warm red brick walls, arched windows, and a compact open plaza without signs or people."
+  },
+  {
+    "city": "合肥",
+    "landmark": "包公园",
+    "asset": "44-hefei-bao-park.webp",
+    "subject": "A recognizable Bao Gong memorial pavilion with dark tiled roof, red timber, a lotus pond, stone bridge, and restrained Anhui garden setting."
+  },
+  {
+    "city": "福州",
+    "landmark": "三坊七巷",
+    "asset": "45-fuzhou-three-lanes.webp",
+    "subject": "A compact Three Lanes and Seven Alleys streetscape with white firewalls, dark tiled roofs, narrow stone lane, and one restrained banyan tree."
+  },
+  {
+    "city": "南昌",
+    "landmark": "滕王阁",
+    "asset": "46-nanchang-tengwang-pavilion.webp",
+    "subject": "The multi-tiered Tengwang Pavilion with green glazed roofs, red columns, broad stone terraces, and a restrained Gan River edge."
+  },
+  {
+    "city": "济南",
+    "landmark": "趵突泉",
+    "asset": "47-jinan-baotu-spring.webp",
+    "subject": "The clear turquoise pools and three visible spring plumes of Baotu Spring, framed by a traditional waterside pavilion, stone edges, and willow greenery, with no text."
+  },
+  {
+    "city": "郑州",
+    "landmark": "二七纪念塔",
+    "asset": "48-zhengzhou-erqi-tower.webp",
+    "subject": "The recognizable twin-tower silhouette of the Erqi Memorial Tower in warm stone, with its clock faces simplified and no readable text, set on a compact city plaza."
+  },
+  {
+    "city": "武汉",
+    "landmark": "黄鹤楼",
+    "asset": "49-wuhan-yellow-crane-tower.webp",
+    "subject": "The five-story Yellow Crane Tower with golden upturned roofs on a compact bright green garden terrain island with stone stairs and restrained trees; every plaque and signboard must be blank and unlettered, with no river, bridge, skyline, or detached background element."
+  },
+  {
+    "city": "长沙",
+    "landmark": "岳麓书院",
+    "asset": "50-changsha-yuelu-academy.webp",
+    "subject": "Yuelu Academy's traditional gate and layered gray-tiled halls beneath dense summer trees, with stone paths and restrained Hunan scholarly atmosphere, without text."
+  },
+  {
+    "city": "广州",
+    "landmark": "广州塔",
+    "asset": "51-guangzhou-canton-tower.webp",
+    "subject": "The slender twisting Canton Tower beside a broad Pearl River curve, with restrained modern skyline forms and subtropical green riverbanks."
+  },
+  {
+    "city": "成都",
+    "landmark": "武侯祠",
+    "asset": "52-chengdu-wuhou-shrine.webp",
+    "subject": "A recognizable red-walled Wuhou Shrine gate with dark tiled roofs, ancient cypress trees, stone path, and restrained Sichuan courtyard atmosphere."
+  },
+  {
+    "city": "贵阳",
+    "landmark": "甲秀楼",
+    "asset": "53-guiyang-jiaxiu-pavilion.webp",
+    "subject": "Jiaxiu Pavilion standing on its stone base above the Nanming River, with green-gold roofs, an arched bridge, and lush Guiyang riverbanks."
+  },
+  {
+    "city": "昆明",
+    "landmark": "石林",
+    "asset": "54-kunming-stone-forest.webp",
+    "subject": "Tall blade-like limestone formations of the Stone Forest rising from red earth and green vegetation, with a clear Yunnan karst silhouette."
+  },
+  {
+    "city": "拉萨",
+    "landmark": "布达拉宫",
+    "asset": "55-lhasa-potala-palace.webp",
+    "subject": "The white and red Potala Palace climbing Marpo Ri with its stepped terraces, golden roof accents, and clear high-altitude blue-sky atmosphere, without flags."
+  },
+  {
+    "city": "西安",
+    "landmark": "大雁塔",
+    "asset": "56-xian-giant-wild-goose-pagoda.webp",
+    "subject": "The square-tiered Giant Wild Goose Pagoda rising from a compact Tang-style temple courtyard with stone paths and restrained old trees."
+  },
+  {
+    "city": "兰州",
+    "landmark": "黄河铁桥",
+    "asset": "57-lanzhou-yellow-river-bridge.webp",
+    "subject": "The historic Zhongshan iron bridge spanning the ochre Yellow River, with Baita Mountain rising behind and a compact northwestern river-city setting."
+  },
+  {
+    "city": "西宁",
+    "landmark": "塔尔寺",
+    "asset": "58-xining-kumbum-monastery.webp",
+    "subject": "Kumbum Monastery's white walls, golden roofs, red-brown halls, and compact highland courtyard beneath clear summer light, without flags or text."
+  },
+  {
+    "city": "银川",
+    "landmark": "西夏王陵",
+    "asset": "59-yinchuan-western-xia-tombs.webp",
+    "subject": "A monumental earthen Western Xia tomb tower on a tawny plain with the blue Helan Mountains behind and restrained desert vegetation."
+  },
+  {
+    "city": "乌鲁木齐",
+    "landmark": "红山",
+    "asset": "60-urumqi-red-hill.webp",
+    "subject": "The red rocky ridge of Hongshan with its small historic pagoda, green urban park, and distant snow-lined Tianshan Mountains in clear daylight."
+  },
+  {
+    "city": "香港",
+    "landmark": "维多利亚港",
+    "asset": "61-hong-kong-victoria-harbour.webp",
+    "subject": "Victoria Harbour's recognizable waterfront skyline and layered green Peak, with blue water, one restrained ferry silhouette, and no logos or text."
+  },
+  {
+    "city": "澳门",
+    "landmark": "大三巴牌坊",
+    "asset": "62-macau-ruins-saint-paul.webp",
+    "subject": "The carved stone facade of the Ruins of Saint Paul's above its broad steps, with a restrained fragment of old Macau paving and greenery, without people."
+  },
+  {
+    "city": "台北",
+    "landmark": "台北101",
+    "asset": "63-taipei-101.webp",
+    "subject": "The recognizable stacked-bamboo silhouette of Taipei 101 above a compact modern city base, backed by layered green hills in clear daylight, without flags or logos."
+  }
+]

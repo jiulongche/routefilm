@@ -19,6 +19,9 @@ class _StubFonts:
         default = ImageFont.load_default()
         self.hero = self.city = self.body = self.small = self.tiny = default
 
+    def sized(self, pixels: float):
+        return self.small
+
 
 def _landmark_file(directory: Path, name: str) -> Path:
     path = directory / f"{name}.png"
@@ -51,11 +54,22 @@ def _record_landmarks(monkeypatch) -> list[str]:
         "render_basemap",
         lambda *args, **kwargs: Image.new("RGB", args[3] if len(args) > 3 else (100, 100), (240, 240, 240)),
     )
-    monkeypatch.setattr(
-        Renderer,
-        "_landmark",
-        lambda self, layer, stop, phase, repeated: seen.append(stop.name),
-    )
+    def record_featured(
+        self,
+        layer,
+        camera,
+        names,
+        visited,
+        *,
+        current=None,
+        motion=None,
+        featured=False,
+    ):
+        if featured and current is not None:
+            seen.append(current.name)
+
+    monkeypatch.setattr(Renderer, "_persistent_landmarks", record_featured)
+    monkeypatch.setattr(Renderer, "_showcase_title", lambda *args, **kwargs: None)
     return seen
 
 

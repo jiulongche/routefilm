@@ -1,0 +1,13 @@
+{
+  "status": "reused",
+  "city": "徐闻",
+  "source": "output/arrival-landmarks/pilot/raw/05-xuwen-lighthouse-pineapple.png",
+  "output": "output/arrival-landmarks/formal/raw/02-xuwen-lighthouse-pineapple.png",
+  "packaged_asset": {
+    "sha256": "fd557b8fd11b31b4e28e60835959b08b26833ec2d7333efeeeab3bbc9220501e",
+    "bytes": 314300,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

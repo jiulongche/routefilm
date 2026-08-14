@@ -5,7 +5,7 @@ Most users should invoke the Agent Skill and let Codex or Claude Code operate th
 ## Install and preflight
 
 ```bash
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[cutout,dev]"
 python skills/build-route-map-video/scripts/preflight.py
 ```
 
@@ -22,6 +22,7 @@ route: [海口, 徐闻, 湛江, 南宁]
 video:
   title: 暑假快乐行
   marker: arrow # or black-suv
+  landmarks: auto # or none
   show_ferry: true
 ```
 
@@ -46,6 +47,13 @@ routefilm fetch my-trip.yaml
 routefilm poster my-trip.yaml --output build/poster.jpg
 routefilm render my-trip.yaml
 routefilm qa output/road-trip.mp4 --output build/qa.json
+```
+
+Poster and video commands create immutable `runs/<run-id>/` directories next to the project YAML. They render to a partial file, validate it, then atomically update the requested output path. Inspect or compare history with:
+
+```bash
+routefilm runs list --workspace .
+routefilm runs compare RUN_ID_A RUN_ID_B --workspace . --output build/compare.jpg
 ```
 
 Poster and ending views fit the geographic spread of the full route. Compact regional routes stay close enough to read; geographically broad China routes use the stable full-country view. Advanced projects can force a view with the backward-compatible `map.national_center` and `map.national_zoom` pair.
@@ -97,6 +105,8 @@ routefilm landmark prompt "杭州" "西湖"
 routefilm landmark generate "杭州" "西湖" \
   --output assets/landmarks/hangzhou-west-lake.png
 ```
+
+`video.landmarks: auto` uses explicit stop images first, then the bundled offline catalog. Set it to `none` to disable every landmark. Reusing an existing generation or cutout output name creates a timestamped sibling instead of overwriting the prior asset.
 
 Cut out an existing asset locally:
 

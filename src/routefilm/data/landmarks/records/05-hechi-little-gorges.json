@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "河池",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 56.2,
+  "output": "output/arrival-landmarks/formal/raw/05-hechi-little-gorges.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Hechi, China: Hechi Small Three Gorges\nSubject details: steep layered karst limestone peaks enclosing a narrow jade-green river, forested cliffs and one tiny restrained boat for scale without visible people; unmistakable Guangxi gorge geography",
+  "packaged_asset": {
+    "sha256": "c725c3809b6aa2e4a425dc6e0f539f3ad4c6057e63211d5b06b148df64e0fdd0",
+    "bytes": 335384,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

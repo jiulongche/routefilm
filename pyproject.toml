@@ -37,7 +37,7 @@ Documentation = "https://github.com/jiulongche/routefilm#readme"
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0", "ruff>=0.6"]
-cutout = ["rembg>=2.0.60"]
+cutout = ["rembg[cpu]>=2.0.60"]
 
 [project.scripts]
 routefilm = "routefilm.cli:main"

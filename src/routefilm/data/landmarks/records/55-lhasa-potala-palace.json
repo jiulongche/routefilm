@@ -1,0 +1,20 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 拉萨, China: 布达拉宫\nSubject details: The white and red Potala Palace climbing Marpo Ri with its stepped terraces, golden roof accents, and clear high-altitude blue-sky atmosphere, without flags.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "rembg",
+  "raw": "55-lhasa-potala-palace-chroma.png",
+  "output": "55-lhasa-potala-palace.png",
+  "city": "拉萨",
+  "landmark": "布达拉宫",
+  "builtin_asset": "55-lhasa-potala-palace.webp",
+  "packaged_asset": {
+    "sha256": "67785a8340db4da2d709b02b81b9cde5a3c57dff6a4e16364c9b7d2a00ca73b5",
+    "bytes": 200974,
+    "width": 768,
+    "height": 535,
+    "format": "WEBP"
+  }
+}

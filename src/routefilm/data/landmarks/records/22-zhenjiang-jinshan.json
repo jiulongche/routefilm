@@ -1,0 +1,16 @@
+{
+  "status": "ok",
+  "city": "镇江",
+  "model": "gpt-image-2",
+  "attempt": 1,
+  "elapsed_seconds": 56.68,
+  "output": "output/arrival-landmarks/formal/raw/22-zhenjiang-jinshan.png",
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated China road-trip map\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture and landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly elevated three-quarter view, subject centered, about 72 percent of the square canvas, generous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood, clear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and warm-gold accents matching the route video\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus across the whole landmark, designed to remain clear in a 360-pixel showcase\nConstraints: transparent background; no text, no labels, no logos, no people, no vehicles, no flags, no watermark; isolated clean edges; no shadow outside the terrain island\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy architecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation\nPrimary request: create a recognizable miniature travel landmark for Zhenjiang, China: Jinshan Temple\nSubject details: the compact golden-roofed Jinshan Temple complex climbing a green hill beside the Yangtze River, with its central pagoda and layered halls clearly readable",
+  "packaged_asset": {
+    "sha256": "f4f59618bd2c62f684c05b371bfd048c38d1e7dbb976b72ac23d6a2efc6d4cd1",
+    "bytes": 259008,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}

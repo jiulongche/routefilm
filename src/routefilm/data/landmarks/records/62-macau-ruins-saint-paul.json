@@ -1,0 +1,26 @@
+{
+  "asset_kind": "landmark",
+  "model": "gpt-image-2",
+  "endpoint_configured": true,
+  "prompt": "Use case: stylized-concept\nAsset type: arrival landmark asset for a vertical animated real-map travel video\nPrimary request: create 澳门, China: 大三巴牌坊\nSubject details: The carved stone facade of the Ruins of Saint Paul's above its broad steps, with a restrained fragment of old Macau paving and greenery, without people.\nStyle/medium: semi-realistic premium 3D travel miniature, geographically recognizable architecture\nand landscape, polished and detailed but not toy-like\nComposition/framing: one compact landmark diorama on a small irregular terrain island, slightly\nelevated three-quarter orthographic view, subject centered, about 72 percent of a square canvas,\ngenerous clean padding\nLighting/mood: consistent soft summer afternoon daylight from upper left, cheerful road-trip mood,\nclear atmosphere\nColor direction: natural greens and cyan-blue water, stone gray-white, restrained coral-red and\nwarm-gold accents\nTechnical quality: crisp architectural edges, fine material detail, high micro-contrast, sharp focus\nacross the whole landmark, readable in a 360-pixel showcase\nBackground: one perfectly flat chroma magenta #FF00FF color edge to edge\nConstraints: no city name, caption, letters, logo, watermark, people, vehicles, flags, map, road,\nframe, cast shadow, contact shadow, background scenery, gradient, or cropped structure\nAvoid: shallow depth of field, soft focus, motion blur, night scene, dramatic fog, fantasy\narchitecture, postcard frame, circular badge, speech bubble, clutter, exaggerated saturation.",
+  "quality": "high",
+  "cutout_method": "chroma_soft_matte",
+  "raw": "62-macau-ruins-saint-paul-chroma.png",
+  "output": "62-macau-ruins-saint-paul.png",
+  "city": "澳门",
+  "landmark": "大三巴牌坊",
+  "builtin_asset": "62-macau-ruins-saint-paul.webp",
+  "postprocess": {
+    "source": "62-macau-ruins-saint-paul-chroma.png",
+    "source_sha256": "b524a4116cafa9b361d9ada12dd084406a7b14e6624d3868e65203785a669389",
+    "method": "border auto-key, soft matte 12-220, magenta despill, 1px edge contract",
+    "intermediate_sha256": "69dbac867c4c6169d148b867e10bcee3125643dd138070d4b2d10dfb92ddd593"
+  },
+  "packaged_asset": {
+    "sha256": "c56232c127a3ac25b1866eb9082247aa601ffbc628e2f31e714173f35a48fc76",
+    "bytes": 175444,
+    "width": 768,
+    "height": 768,
+    "format": "WEBP"
+  }
+}
