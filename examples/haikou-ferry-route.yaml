@@ -1,0 +1,13 @@
+# Ferry example. The Haikou-Xuwen sea crossing and vehicle handoff resolve automatically.
+route:
+  - 海口
+  - 徐闻
+  - 湛江
+  - 南宁
+
+video:
+  title: 从海岛出发
+  marker: black-suv
+  landmarks: auto
+  show_ferry: true
+  output: ../output/haikou-ferry-route.mp4

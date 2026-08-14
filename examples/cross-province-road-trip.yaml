@@ -1,0 +1,17 @@
+# Long-distance example. RouteFilm adapts camera height and timing to each leg's distance.
+route:
+  - 重庆
+  - 汉中
+  - 西安
+  - 三门峡
+  - 许昌
+  - 周口
+  - 蚌埠
+  - 南京
+  - 上海
+
+video:
+  title: 山河向东
+  marker: black-suv
+  landmarks: auto
+  output: ../output/cross-province-road-trip.mp4

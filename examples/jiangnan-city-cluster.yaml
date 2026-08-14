@@ -1,0 +1,17 @@
+# Dense-city example. Replace these names with any ordered route; coordinates resolve automatically.
+route:
+  - 南京
+  - 扬州
+  - 镇江
+  - 无锡
+  - 苏州
+  - 昆山
+  - 上海
+  - 杭州
+  - 富阳
+
+video:
+  title: 江南城市漫游
+  marker: arrow
+  landmarks: auto
+  output: ../output/jiangnan-city-cluster.mp4
