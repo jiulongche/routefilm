@@ -3,7 +3,7 @@
 - Confirm stop order, repeat visits, leg count, unique city count, and displayed distance.
 - Confirm every routed leg; investigate straight-line fallbacks.
 - Confirm Web Mercator proportions from opening through ending.
-- Confirm the national view contains all required geography without clipping.
+- Confirm the full-route overview contains all required geography without clipping or excessive empty space.
 - Confirm labels appear, remain readable, and do not cover the active marker unnecessarily.
 - Confirm long legs use a higher camera and dense clusters use close views.
 - Confirm heading follows displacement without side-slip.

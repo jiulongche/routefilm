@@ -74,7 +74,7 @@ def build_parser() -> argparse.ArgumentParser:
     geocode.add_argument("--user-agent", default=MapSettings.user_agent)
     geocode.add_argument("--output", default="build/geocoding-review.json")
 
-    poster = commands.add_parser("poster", help="render the national overview still")
+    poster = commands.add_parser("poster", help="render the full-route overview still")
     poster.add_argument("project")
     poster.add_argument("--output", required=True)
     poster.add_argument("--refresh", action="store_true")

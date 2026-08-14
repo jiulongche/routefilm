@@ -43,3 +43,7 @@ def test_skill_asks_one_adaptive_choice_question_at_a_time():
     assert "do not offer generation" in body
     assert "blocking setup state" in body
     assert "Do not create an ad hoc empty file" in body
+    assert "Do not render a poster, sample, silent master" in body
+    assert "片名怎么设置？" in body
+    assert "recommendation itself must be visible" in body
+    assert "video.title" in body

@@ -19,6 +19,7 @@ Ask exactly one question at a time. Prefer the agent product's native structured
    - `自定义载具`: user image or GPT Image 2 after configuration and prompt review.
 3. When `自定义载具` is selected, ask one source question. Put `使用已有图片` first. Include GPT Image 2 generation only when the capability check passes; otherwise offer `先配置生图服务` as a non-generation path.
 4. Run `routefilm image status`, then ask only: “到站时需要展示城市地标吗？”
+5. Once landmark mode is resolved, infer one concise title from the route and any known season or trip theme, then ask only: “片名怎么设置？” Offer `采用推荐标题《具体标题》（推荐）`, `自定义标题`, and `Road Trip`. Show the actual recommendation rather than “自动生成标题”. Ask for exact text in a separate free-text question only after the custom choice.
 
 Do not treat the ferry as a whole-route marker choice; mention after marker selection that recognized ferry legs switch automatically. Infer other sensible defaults. Ask one follow-up at a time only when a place-name ambiguity or external cost blocks progress.
 
@@ -52,14 +53,14 @@ When the user chooses `先配置生图服务`, pause all image-dependent work an
 3. Show only the config path printed by the command. If the key is missing, ask the user to place `ROUTEFILM_IMAGE_API_KEY` there locally or set `OPENAI_API_KEY` in the process, then confirm. Never ask for the value in chat and never pass it as a command argument.
 4. After confirmation, rerun `routefilm image status`. If enabled, ask the landmark question again with the generation option. If still disabled, explain only the remaining missing category and stay in setup.
 
-Do not prepare an arbitrary config format, do not assume a default endpoint, and do not continue rendering a no-landmark version while setup is active. Only leave setup when generation becomes available or the user explicitly chooses an existing-image or no-landmark path.
+Do not prepare an arbitrary config format, do not assume a default endpoint, and do not render a poster, sample, full video, or no-landmark branch while setup is active. “Continue in parallel” is not allowed. Only leave setup when generation becomes available or the user explicitly chooses an existing-image or no-landmark path. Resolve the title after leaving setup and write it to `video.title` before rendering.
 
 ## Review gates
 
 Use these gates in order:
 
-1. National poster: route order, national framing, map proportions, Taiwan visibility when relevant, status-panel separation.
-2. Opening sample: national hold, smooth dive, first city arrival.
+1. Full-route poster: route order, adaptive framing, map proportions, Taiwan visibility when relevant, status-panel separation.
+2. Opening sample: full-route hold, smooth dive, first city arrival.
 3. Dense sample: label collisions and close zoom in the shortest cluster.
 4. Ferry sample: spatially clear car/ship handoff in both route directions.
 5. Repeated-stop sample: first visit showcases; later visit pulses only.

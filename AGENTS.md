@@ -2,7 +2,7 @@
 
 Use `skills/build-route-map-video/SKILL.md` for any task involving route maps, road-trip videos, vehicle/ferry movement, city landmarks, or route soundtracks.
 
-When a user chooses image-service setup, pause image-dependent work and follow the Skill's configure-and-recheck loop before returning to landmark choices. Do not silently continue a no-landmark branch.
+When a user chooses image-service setup, pause image-dependent work and follow the Skill's configure-and-recheck loop before returning to landmark choices. Do not render a poster, sample, full video, or no-landmark branch while setup is active. Resolve the user-facing title before the first visual render.
 
 Keep `SKILL.md` as the single behavioral source. Do not copy its full content into vendor instruction files. Preserve API keys, map caches, frame caches, downloaded audio, and private itinerary data outside version control.
 

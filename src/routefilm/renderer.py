@@ -11,7 +11,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from .assets import builtin_ferry, builtin_marker
-from .camera import Camera, china_national_camera, fit_geometry, interpolate
+from .camera import Camera, fit_geometry, interpolate, route_overview_camera
 from .config import ProjectConfig, Stop
 from .ferry import boundary_positions, ferry_state
 from .geo import Point, smoothstep, vehicle_motion_series
@@ -75,15 +75,13 @@ class Renderer:
         self.cameras = [
             fit_geometry(leg.coordinates, leg.distance_km, self.map_size) for leg in routes
         ]
-        if config.map.national_center and config.map.national_zoom is not None:
-            self.national = Camera(config.map.national_center, config.map.national_zoom)
-        elif all(72 <= stop.lon <= 136 and 15 <= stop.lat <= 55 for stop in config.stops):
-            self.national = china_national_camera()
-        else:
-            all_points = [point for leg in routes for point in leg.coordinates]
-            self.national = fit_geometry(
-                all_points, sum(leg.distance_km for leg in routes), self.map_size, (0.78, 0.78)
-            )
+        all_points = [point for leg in routes for point in leg.coordinates]
+        self.overview = route_overview_camera(
+            all_points,
+            self.map_size,
+            override_center=config.map.national_center,
+            override_zoom=config.map.national_zoom,
+        )
         self.vehicle_asset = (
             self._asset(config.video.vehicle_asset)
             if config.video.vehicle_asset
@@ -313,7 +311,7 @@ def render_poster(config: ProjectConfig, output: Path, refresh: bool = False) ->
     config = resolve_project(config, refresh=refresh)
     routes = fetch_routes(config, refresh=refresh)
     renderer = Renderer(config, routes)
-    image = renderer.frame(renderer.national, 0, 0, 0, mode="opening")
+    image = renderer.frame(renderer.overview, 0, 0, 0, mode="opening")
     output.parent.mkdir(parents=True, exist_ok=True)
     image.save(output, quality=95, subsampling=0)
     return output
@@ -346,9 +344,9 @@ def render_video(config: ProjectConfig, refresh: bool = False) -> Path:
     dive = round(config.video.dive_seconds * fps)
     arrival = round(config.video.arrival_seconds * fps)
     for _ in range(hold):
-        emit(renderer.frame(renderer.national, 0, 0, 0, mode="opening"))
+        emit(renderer.frame(renderer.overview, 0, 0, 0, mode="opening"))
     for frame in range(dive):
-        emit(renderer.frame(interpolate(renderer.national, first_camera, frame / max(1, dive - 1)), 0, 0, 0, mode="opening"))
+        emit(renderer.frame(interpolate(renderer.overview, first_camera, frame / max(1, dive - 1)), 0, 0, 0, mode="opening"))
 
     visits: Counter[str] = Counter({config.stops[0].name: 1})
     for frame in range(arrival):
@@ -372,10 +370,10 @@ def render_video(config: ProjectConfig, refresh: bool = False) -> Path:
 
     outro = round(config.video.outro_seconds * fps)
     for frame in range(outro):
-        camera = interpolate(renderer.cameras[-1], renderer.national, frame / max(1, outro - 1))
+        camera = interpolate(renderer.cameras[-1], renderer.overview, frame / max(1, outro - 1))
         emit(renderer.frame(camera, len(routes) - 1, 1, 1, mode="outro"))
     for _ in range(round(config.video.final_hold_seconds * fps)):
-        emit(renderer.frame(renderer.national, len(routes) - 1, 1, 1, mode="outro"))
+        emit(renderer.frame(renderer.overview, len(routes) - 1, 1, 1, mode="outro"))
     if process.stdin:
         process.stdin.close()
     if process.wait():

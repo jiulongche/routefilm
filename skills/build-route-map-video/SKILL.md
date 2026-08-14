@@ -19,6 +19,7 @@ Ask in this order and skip any decision the user already answered:
 2. Ask “路线上的移动标记用什么？” with `质感箭头（推荐）`, `黑色电动 SUV`, and `自定义载具`.
 3. If the user selects a custom marker, resolve its source with one separate question. Offer an existing image first. Offer GPT Image 2 only when `routefilm image status` reports `generation_enabled: true`; otherwise offer configuration as a separate path, never as an executable generation choice.
 4. Run `routefilm image status`, then ask one landmark question using only options the current environment can execute.
+5. After the landmark branch is fully resolved, infer one short, specific title from the route and known trip context. Ask “片名怎么设置？” with `采用推荐标题《具体标题》（推荐）`, `自定义标题`, and `Road Trip`. Do not show a placeholder such as “自动生成标题”; the recommendation itself must be visible. If the user chooses custom, ask for the exact title as the next single free-text question. Write the result to `video.title` before the first poster.
 
 Present poster, pilot, and final outputs as reviewable results rather than exposing every internal step.
 
@@ -30,24 +31,25 @@ Require one input:
 
 Never ask the user for longitude or latitude. Resolve coordinates automatically and use the cache on later runs. If the resolver reports equally plausible matches, ask which named place they mean and show human-readable candidate locations. Do not expose coordinates as the requested answer.
 
-Offer the bundled generated arrow and unbranded black electric SUV. Use the arrow when the user has no preference. Automatically use the bundled roll-on/roll-off ferry for detected ferry legs; do not present the ferry as a whole-route marker. Infer portrait `720x1280`, `15 fps`, real map, distance-aware timing, silent first render, and title `Road Trip` when the user has no preference. Ask about title, music, aspect ratio, and visual theme only when the answer materially changes the first review.
+Offer the bundled generated arrow and unbranded black electric SUV. Use the arrow when the user has no preference. Automatically use the bundled roll-on/roll-off ferry for detected ferry legs; do not present the ferry as a whole-route marker. Infer portrait `720x1280`, `15 fps`, real map, distance-aware timing, and a silent first render. Resolve the title through the single-question choice above; `Road Trip` remains the fallback only when the user explicitly leaves the title unspecified. Ask about music, aspect ratio, and visual theme only when the answer materially changes the first review.
 
 Always resolve the landmark choice before building arrivals. Read the `generation_enabled` field from `routefilm image status`. If true, ask “到站时需要展示城市地标吗？” with `智能推荐并生成（推荐）`, `不展示`, and `使用已有图片`. If false, do not offer generation; use `不展示（推荐）`, `使用已有图片`, and `先配置生图服务`. Treat repeated cities as one generated landmark asset. Do not generate landmark images until the proposed landmark list and prompts are approved.
 
-If the user selects `先配置生图服务`, enter a blocking setup state. Do not create an ad hoc empty file and continue a no-landmark branch in parallel. Read the image-service setup in [assets.md](references/assets.md), determine which category is missing, and ask only the next required setup question. Use `routefilm image configure` for the URL, never accept a key in chat or a command argument, and wait while the user places the key locally in the reported private config file or process environment. Rerun `routefilm image status` after confirmation. Return to the landmark question only when `generation_enabled` becomes true; remain in setup or explicitly let the user choose to leave setup otherwise.
+If the user selects `先配置生图服务`, enter a blocking setup state. Do not create an ad hoc empty file and continue a no-landmark branch in parallel. Do not render a poster, sample, silent master, or alternate no-landmark branch while setup is active. Read the image-service setup in [assets.md](references/assets.md), determine which category is missing, and ask only the next required setup question. Use `routefilm image configure` for the URL, never accept a key in chat or a command argument, and wait while the user places the key locally in the reported private config file or process environment. Rerun `routefilm image status` after confirmation. Return to the landmark question only when `generation_enabled` becomes true; remain in setup or explicitly let the user choose to leave setup otherwise.
 
 ## Build in review gates
 
 1. Run the preflight script in `scripts/preflight.py`.
 2. Create a YAML project with `routefilm init` and replace `route` with the ordered place names. Let `fetch`, `poster`, or `render` resolve coordinates automatically.
 3. If automatic resolution raises an ambiguity, ask one structured candidate-choice question for one ambiguous name at a time, update that name with city/province context, and retry.
-4. Render a national poster with `routefilm poster` before a video.
+4. Fully resolve landmark mode, including any requested image-service setup, then resolve and write the title. These are hard gates before visual rendering.
 5. Fetch and inspect OSRM route geometry. Keep automatic ferry classification unless a genuine exception needs an explicit override.
-6. Render a short opening and one representative dense-city leg when making a new style.
-7. Render the silent full video only after the poster and sample pass review.
-8. Add music as a separate branch so map revisions never silently invalidate a music edit.
-9. Run `routefilm qa` and inspect ferry, repeated-stop, dense-city, opening, and ending keyframes.
-10. After the silent master passes review, ask one music question: keep the silent master, search licensed music, or use audio supplied by the user. Do not combine this with another decision.
+6. Render a full-route overview poster with `routefilm poster` before a video. Regional routes use a fitted overview; only geographically broad China routes use the full-country camera.
+7. Render a short opening and one representative dense-city leg when making a new style.
+8. Render the silent full video only after the poster and sample pass review.
+9. Add music as a separate branch so map revisions never silently invalidate a music edit.
+10. Run `routefilm qa` and inspect ferry, repeated-stop, dense-city, opening, and ending keyframes.
+11. After the silent master passes review, ask one music question: keep the silent master, search licensed music, or use audio supplied by the user. Do not combine this with another decision.
 
 Read [workflow.md](references/workflow.md) for the complete decision sequence. Read [motion-and-camera.md](references/motion-and-camera.md) when tuning movement. Read [assets.md](references/assets.md) before generating or cutting out vehicles, ferries, or landmarks. Read [music.md](references/music.md) before searching or downloading audio. Read [release-checklist.md](references/release-checklist.md) before final delivery.
 
@@ -58,10 +60,10 @@ Read [workflow.md](references/workflow.md) for the complete decision sequence. R
 - Use actual route geometry instead of straight lines when a router is available.
 - Sample the moving marker by traveled distance. Derive heading from the tangent of the same smoothed position series.
 - Give routes above 420 km a higher camera and slightly faster traversal. Give routes below 55 km a closer camera and longer traversal.
-- Keep city labels visible while useful. Drop labels only on collision or when the national scale cannot hold them.
+- Keep city labels visible while useful. Drop labels only on collision or when the overview scale cannot hold them.
 - Enlarge a first-arrival landmark at map center. Pulse a repeated arrival in place instead of replaying the full showcase.
 - Use a staged ferry handoff: approach, board, sail, exit, continue. Do not morph a car into a ferry.
-- Start with a national route hold and smooth camera dive. End with a slow national pullback and hold the complete route.
+- Start with a fitted full-route hold and smooth camera dive. End with a slow pullback to the same overview and hold the complete route. Reserve the full-China camera for geographically broad routes or an explicit YAML override.
 
 ## Choose the marker
 

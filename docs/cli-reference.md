@@ -27,6 +27,8 @@ video:
 
 `fetch`, `poster`, and `render` resolve and cache coordinates automatically. Users never need to enter longitude or latitude.
 
+`video.title` accepts any text. When using the Skill, the agent proposes a concrete title based on the route and known trip theme, then lets the user accept it or provide a custom title before the poster is rendered.
+
 The standalone geocoder is an optional diagnostic when investigating an ambiguous place name:
 
 ```bash
@@ -45,6 +47,8 @@ routefilm poster my-trip.yaml --output build/poster.jpg
 routefilm render my-trip.yaml
 routefilm qa output/road-trip.mp4 --output build/qa.json
 ```
+
+Poster and ending views fit the geographic spread of the full route. Compact regional routes stay close enough to read; geographically broad China routes use the stable full-country view. Advanced projects can force a view with the backward-compatible `map.national_center` and `map.national_zoom` pair.
 
 ## Marker assets
 

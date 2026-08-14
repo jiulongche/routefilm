@@ -55,3 +55,32 @@ def interpolate(start: Camera, end: Camera, progress: float) -> Camera:
 def china_national_camera() -> Camera:
     """A stable portrait framing that includes the full Taiwan island."""
     return Camera((104.6, 34.7), 3.92)
+
+
+def route_overview_camera(
+    points: Sequence[Point],
+    viewport: tuple[int, int],
+    *,
+    override_center: Point | None = None,
+    override_zoom: float | None = None,
+) -> Camera:
+    """Frame the full route, reserving the China-wide view for broad itineraries."""
+    if (override_center is None) != (override_zoom is None):
+        raise ValueError("overview camera override requires both center and zoom")
+    if override_center is not None and override_zoom is not None:
+        return Camera(override_center, override_zoom)
+    if not points:
+        raise ValueError("overview camera needs at least one route point")
+
+    lons, lats = zip(*points)
+    lon_span = max(lons) - min(lons)
+    lat_span = max(lats) - min(lats)
+    inside_china = all(72 <= lon <= 136 and 15 <= lat <= 55 for lon, lat in points)
+    crosses_multiple_china_regions = lon_span >= 12 and lat_span >= 12
+    crosses_most_of_one_axis = lon_span >= 26 or lat_span >= 23
+    if inside_china and (crosses_multiple_china_regions or crosses_most_of_one_axis):
+        return china_national_camera()
+
+    # Total road distance is intentionally ignored here: loops can be long while
+    # remaining geographically compact. The bounding geometry determines framing.
+    return fit_geometry(points, 0, viewport, (0.80, 0.80))

@@ -1,4 +1,12 @@
-from routefilm.camera import Camera, fit_geometry, interpolate
+import pytest
+
+from routefilm.camera import (
+    Camera,
+    china_national_camera,
+    fit_geometry,
+    interpolate,
+    route_overview_camera,
+)
 
 
 def test_long_leg_is_higher_than_same_short_geometry():
@@ -16,3 +24,33 @@ def test_camera_interpolation_keeps_endpoints():
     assert abs(result.center[0] - end.center[0]) < 1e-9
     assert abs(result.center[1] - end.center[1]) < 1e-9
     assert abs(result.zoom - end.zoom) < 1e-9
+
+
+def test_regional_china_route_uses_tight_full_route_overview():
+    route = [(121.47, 31.23), (118.80, 32.06), (117.12, 36.65), (116.41, 39.90)]
+
+    camera = route_overview_camera(route, (672, 874))
+
+    assert camera.zoom > 5.5
+    assert camera != china_national_camera()
+
+
+def test_broad_china_route_uses_national_overview():
+    route = [(110.20, 20.04), (106.23, 38.49), (121.47, 31.23), (116.41, 39.90)]
+
+    assert route_overview_camera(route, (672, 874)) == china_national_camera()
+
+
+def test_overview_override_remains_authoritative():
+    route = [(121.47, 31.23), (116.41, 39.90)]
+
+    camera = route_overview_camera(
+        route, (672, 874), override_center=(112.0, 35.0), override_zoom=4.75
+    )
+
+    assert camera == Camera((112.0, 35.0), 4.75)
+
+
+def test_overview_override_requires_center_and_zoom_together():
+    with pytest.raises(ValueError, match="both center and zoom"):
+        route_overview_camera([(121.47, 31.23)], (672, 874), override_zoom=5.0)

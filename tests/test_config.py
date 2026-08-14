@@ -65,3 +65,14 @@ def test_black_suv_preset_and_ferry_toggle(tmp_path: Path):
     config = load_project(project)
     assert config.video.marker == "black-suv"
     assert config.video.show_ferry is False
+
+
+def test_video_title_accepts_custom_chinese_text(tmp_path: Path):
+    project = tmp_path / "trip.yaml"
+    project.write_text(
+        "stops: [{name: A, lon: 1, lat: 1}, {name: B, lon: 2, lat: 2}]\n"
+        "video: {title: 一路向北}\n",
+        encoding="utf-8",
+    )
+
+    assert load_project(project).video.title == "一路向北"
