@@ -262,6 +262,7 @@ class Renderer:
         visit_counts: Counter[str] | None = None,
         vehicle_position: Point | None = None,
         vehicle_heading: float = 0.0,
+        arrival_stop: Stop | None = None,
     ) -> Image.Image:
         canvas, layer = self._base(camera)
         if mode in {"opening", "outro"}:
@@ -286,7 +287,7 @@ class Renderer:
             visited_names.append(self.routes[leg_index].destination)
             self._labels(layer, camera, visited_names)
             if arrival_phase is not None:
-                destination = self.stop_by_name[self.routes[leg_index].destination]
+                destination = arrival_stop or self.stop_by_name[self.routes[leg_index].destination]
                 repeated = bool(visit_counts and visit_counts[destination.name] > 1)
                 self._landmark(layer, destination, arrival_phase, repeated)
         draw = ImageDraw.Draw(layer, "RGBA")
@@ -350,7 +351,7 @@ def render_video(config: ProjectConfig, refresh: bool = False) -> Path:
 
     visits: Counter[str] = Counter({config.stops[0].name: 1})
     for frame in range(arrival):
-        emit(renderer.frame(first_camera, 0, 0, 0, arrival_phase=frame / max(1, arrival - 1), visit_counts=visits))
+        emit(renderer.frame(first_camera, 0, 0, 0, arrival_phase=frame / max(1, arrival - 1), visit_counts=visits, arrival_stop=config.stops[0]))
 
     for index, (leg, camera, spec) in enumerate(zip(routes, renderer.cameras, config.legs)):
         seconds = spec.duration_seconds or leg_seconds(leg.distance_km, leg.kind)
