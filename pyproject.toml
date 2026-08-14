@@ -47,8 +47,7 @@ packages = ["src/routefilm"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
-  "/docs/media/*.jpg",
-  "/docs/media/*.mp4",
+  "/docs/media/*",
 ]
 
 [tool.pytest.ini_options]
