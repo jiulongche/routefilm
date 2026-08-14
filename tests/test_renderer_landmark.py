@@ -4,12 +4,20 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageFont
 
 from routefilm import renderer as renderer_module
 from routefilm.config import LegSpec, ProjectConfig, Stop, VideoSettings
 from routefilm.renderer import Renderer
 from routefilm.routing import RoutedLeg
+
+
+class _StubFonts:
+    """Keep the renderer independent of whichever CJK font the host happens to ship."""
+
+    def __init__(self, path: Path, scale: float) -> None:
+        default = ImageFont.load_default()
+        self.hero = self.city = self.body = self.small = self.tiny = default
 
 
 def _landmark_file(directory: Path, name: str) -> Path:
@@ -36,6 +44,8 @@ def _project(tmp_path: Path) -> tuple[ProjectConfig, list[RoutedLeg]]:
 
 def _record_landmarks(monkeypatch) -> list[str]:
     seen: list[str] = []
+    monkeypatch.setattr(renderer_module, "_font_path", lambda configured: Path("stub.ttc"))
+    monkeypatch.setattr(renderer_module, "Fonts", _StubFonts)
     monkeypatch.setattr(
         renderer_module,
         "render_basemap",
