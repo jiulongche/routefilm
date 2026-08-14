@@ -59,6 +59,7 @@ def test_chroma_cutout_handles_shaded_green_background():
 def test_image_generation_requires_both_url_and_key(
     tmp_path, monkeypatch: pytest.MonkeyPatch
 ):
+    monkeypatch.setenv("ROUTEFILM_ENV_FILE", str(tmp_path / "absent.env"))
     monkeypatch.delenv("ROUTEFILM_IMAGE_BASE_URL", raising=False)
     monkeypatch.delenv("ROUTEFILM_IMAGE_API_KEY", raising=False)
     monkeypatch.delenv("OPENAI_API_KEY", raising=False)
