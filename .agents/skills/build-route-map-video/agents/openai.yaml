@@ -1,0 +1,4 @@
+interface:
+  display_name: "真实地图路线视频"
+  short_description: "真实中文地图路线视频、载具轮渡、地标与卡点配乐制作"
+  default_prompt: "Use $build-route-map-video to guide me one question at a time through my route, marker, and available landmark options, then build a polished real-map route video."

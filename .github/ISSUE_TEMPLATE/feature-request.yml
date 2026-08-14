@@ -1,0 +1,25 @@
+name: Feature request
+description: Propose a focused RouteFilm improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: Describe the route-video outcome, not only the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Constraints checked
+      options:
+        - label: This does not require committing credentials, private routes, or unclear-license media.
+          required: true

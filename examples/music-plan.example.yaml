@@ -1,0 +1,19 @@
+# Replace these paths with audio downloaded and reviewed by the user.
+duration_seconds: 60
+sample_rate: 48000
+crossfade_seconds: 1.8
+fade_in_seconds: 1.2
+fade_out_seconds: 4.2
+
+tracks:
+  coast: ../build/licensed-audio/coast.mp3
+  city: ../build/licensed-audio/city.mp3
+
+regions:
+  - {track: coast, start: 0, end: 30, offset: 4, gain_db: -5}
+  - {track: city, start: 30, end: 60, offset: 8, gain_db: -4}
+
+accents:
+  - {time: 8.2, major: true, label: first-arrival}
+  - {time: 24.0, major: false, label: city-arrival}
+  - {time: 30.0, major: true, label: region-change}

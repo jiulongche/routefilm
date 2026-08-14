@@ -1,0 +1,39 @@
+name: Bug report
+description: Report a reproducible RouteFilm problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not attach API keys, private routes, downloaded music, or tile caches.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the command or agent request and the observed result.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: RouteFilm and Python versions
+      placeholder: RouteFilm 0.1.0, Python 3.12
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Agent Skill intake
+        - Geocoding or routing
+        - Map rendering or camera
+        - Vehicle, ferry, or landmarks
+        - Music
+        - Packaging or installation
+    validations:
+      required: true

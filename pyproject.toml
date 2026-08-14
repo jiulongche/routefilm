@@ -1,0 +1,59 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "routefilm"
+version = "0.1.0"
+description = "Agent-ready toolkit for cinematic route videos on real maps"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "RouteFilm contributors" }]
+keywords = ["map", "route", "video", "codex", "claude-code", "openstreetmap"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "numpy>=1.24",
+  "Pillow>=10.0",
+  "PyYAML>=6.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/jiulongche/routefilm"
+Repository = "https://github.com/jiulongche/routefilm.git"
+Issues = "https://github.com/jiulongche/routefilm/issues"
+Documentation = "https://github.com/jiulongche/routefilm#readme"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+cutout = ["rembg>=2.0.60"]
+
+[project.scripts]
+routefilm = "routefilm.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/routefilm"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+  "/docs/media/*.jpg",
+  "/docs/media/*.mp4",
+]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"

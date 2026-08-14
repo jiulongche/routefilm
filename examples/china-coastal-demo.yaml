@@ -1,0 +1,21 @@
+# Public demonstration route. Coordinates and the ferry leg resolve automatically.
+route:
+  - 海口
+  - 徐闻
+  - 湛江
+  - 南宁
+
+map:
+  tile_url: https://tile.openstreetmap.org/{z}/{x}/{y}.png
+  router_url: https://router.project-osrm.org/route/v1/driving/{lon1},{lat1};{lon2},{lat2}?overview=full&geometries=geojson
+  cache_dir: ../.cache/routefilm
+  national_center: [104.6, 34.7]
+  national_zoom: 3.92
+
+video:
+  title: 暑假快乐行
+  output: ../output/china-coastal-demo.mp4
+  width: 720
+  height: 1280
+  fps: 15
+  crf: 18
